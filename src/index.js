@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Hello from './Hello';
 
 ReactDOM.render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>,
-  // document.getElementById('root')
-  <h1>Hello, world!</h1>,
+  <React.StrictMode>
+    <Hello />
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
