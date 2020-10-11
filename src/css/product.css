@@ -1,0 +1,10 @@
+.wrapper{
+    padding-right: 0 !important;
+    margin-bottom: 15px !important;
+}
+
+.item {
+    margin-right: 10px;
+    box-shadow: 0 0 10px 1px gray;
+    margin-bottom: 5px;
+}
