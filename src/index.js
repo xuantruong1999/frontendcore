@@ -4,17 +4,11 @@ import './css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './function/Header';
-import Clock from './function/Clock';
-import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    <div>
-      <Header />
-      <App />
-      <Clock />
-    </div>
-    
+  <div>
+    <App />
+  </div>
   ,
   document.getElementById('root')
 );

@@ -1,15 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './css/App.css';
 import './index.js';
 import Product from './function/Product';
+import Header from './function/Header';
+import About from './function/About';
+import Home from './function/Home';
+import Footer from './function/Footer';
+import Contact from './function/Contact';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="container mt-2">
-        <Product name="Iphone" description="this is demo balalalala" image="https://product.hstatic.net/1000391896/product/iphone-8-plus-dai-loan-loai-1-23-800x800_17133c6f90bb4bc3b9e4a566fae32605_grande.jpg" price="15000000"/>
-    </div>
-    
+    <Router>
+    <Header />
+      <div className="container">
+          <Switch>
+              <Route path="/" exact component={ Home } />
+              <Route path="/about" component={ About } />
+              <Route path="/contact" component={ Contact } />
+              <Route path="/products" component={ Product } />
+          </Switch>
+      </div>
+    <Footer />
+    </Router>                   
   );
 }
 
