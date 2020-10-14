@@ -8,7 +8,6 @@ import Footer from './function/Footer';
 import Contact from './function/Contact';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AppProvider from './function/AppProvider';
-import AppContext from './function/AppProvider';
 
 class App extends React.Component {
   render(){

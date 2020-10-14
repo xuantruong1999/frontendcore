@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useReducer} from 'react';
 import AppContext from '../Contexts/AppContext';
 import list from '../data/data';
 
+
 class AppProvider extends React.Component{
-   render(){
+    
+    filter(name){
+        console.log(name);
+    }
+
+    render(){
        return(
-           <AppContext.Provider value={ 'FrontendCore' }>
+           <AppContext.Provider value={[list, setList] }>
                { this.props.children}
            </AppContext.Provider>
        );
