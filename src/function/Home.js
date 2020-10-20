@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import AppContext from '../Contexts/AppContext';
+import React from 'react';
 
 class Home extends React.Component{
     render(){

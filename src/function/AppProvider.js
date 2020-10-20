@@ -1,19 +1,31 @@
-import React, { useReducer} from 'react';
+import React from 'react';
 import AppContext from '../Contexts/AppContext';
-import list from '../data/data';
-
 
 class AppProvider extends React.Component{
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            searchString: null
+        }
+    };
     
-    filter(name){
-        console.log(name);
-    }
+    getSearchstring = (kw = null) => {
+       if(kw != null || kw == ""){
+            this.setState({searchString: kw})
+      }
+    } 
 
     render(){
        return(
-           <AppContext.Provider value={[list, setList] }>
-               { this.props.children}
-           </AppContext.Provider>
+            <AppContext.Provider value={
+                {
+                    state: this.state,
+                    callBack: this.getSearchstring
+                }
+            }>
+                { this.props.children }
+            </AppContext.Provider>
        );
    }
 }
