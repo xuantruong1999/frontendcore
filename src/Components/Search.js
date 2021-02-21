@@ -4,13 +4,13 @@ import React, {Component} from 'react';
     constructor(props){
         super(props);
         this.state = {
-            searchString: null,
+            searchString: "",
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event){
+    handleChange(event){    
         this.setState({ searchString: event.target.value });
     }
 

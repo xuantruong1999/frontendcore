@@ -27,7 +27,7 @@ class Clock extends React.Component{
 
     render(){
         return(
-            <footer class="page-footer font-small bg-blue text-center">
+            <footer className="page-footer font-small text-center bg-secondary">
                 <h2>Timer</h2>
                 <p>{ this.state.date.toLocaleTimeString() }</p>
             </footer>
