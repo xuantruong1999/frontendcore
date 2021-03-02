@@ -16,14 +16,16 @@ class App extends React.Component {
      <AppProvider>
         <Router>
           <Header />
-          <div className="row container p-2">
+          <div className="container">
+            <div className="row">
               <SideBar />
-              <Switch>
-                    <Route path="/" exact component={ Home } />
-                    <Route path="/about" component={ About } />
-                    <Route path="/contact" component={ Contact } />
-                    <Route path="/products" component={ Product } />
-              </Switch>
+                <Switch>
+                      <Route path="/" exact component={ Home } />
+                      <Route path="/about" component={ About } />
+                      <Route path="/contact" component={ Contact } />
+                      <Route path="/products" component={ Product } />
+                </Switch>
+            </div>
           </div>
           <Footer />
         </Router>

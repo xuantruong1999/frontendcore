@@ -34,6 +34,20 @@ var list = [
         description: "this is demo", 
         link: "https://product.hstatic.net/1000391896/product/iphone-8-plus-dai-loan-loai-1-23-800x800_17133c6f90bb4bc3b9e4a566fae32605_grande.jpg",
         price: "200$"
+    },
+    { 
+        key: 6,
+        name: "I",
+        description: "this is demo", 
+        link: "https://product.hstatic.net/1000391896/product/iphone-8-plus-dai-loan-loai-1-23-800x800_17133c6f90bb4bc3b9e4a566fae32605_grande.jpg",
+        price: "200$"
+    }, 
+    { 
+        key: 7,
+        name: "MIC",
+        description: "this is demo", 
+        link: "https://product.hstatic.net/1000391896/product/iphone-8-plus-dai-loan-loai-1-23-800x800_17133c6f90bb4bc3b9e4a566fae32605_grande.jpg",
+        price: "200$"
     }      
 ]
 
