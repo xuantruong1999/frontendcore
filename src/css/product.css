@@ -1,0 +1,11 @@
+.wrapper{
+    padding-right: 0 !important;
+    margin-bottom: 15px !important;
+    background-color: #fff;    
+}
+.item a {
+    color: black !important;
+}
+.item:hover{
+    box-shadow: rgb(0 0 0 / 10%) 1px 1px 20px;
+}
