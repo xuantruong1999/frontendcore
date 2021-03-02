@@ -4,7 +4,7 @@ class Home extends React.Component{
   
     render(){
         return(
-            <div className="col-9">
+            <div className="col col-lg-10">
                <h1>Home</h1>
                <div className="jumbotron jumbotron-fluid">
                     <div className="container">

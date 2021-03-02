@@ -13,7 +13,7 @@ class SideBar extends Component{
     }
 
     handleSubmit(event){
-        alert('params:' + this.state.value);
+        alert('params: ' + this.state.min + "- " + this.state.max);
     }
     render(){
         return(
@@ -21,16 +21,14 @@ class SideBar extends Component{
                 <hr className="top-bar"/>
                 <form action="" onSubmit={this.handleSubmit}>
                     <div className="row m-1">
-                        <div className="form-check">
+                        <div className="form-check mr-1">
                             <input type="checkbox" className="form-check-input" name="brand-apple" id="brand-apple" />
                             <label className="form-check-label" htmlFor="brand-samsung">Apple</label>
                         </div>
-                        <div className="form-check ml-2">
+                        <div className="form-check">
                             <input type="checkbox" className="form-check-input" name="brand-samsung" id="brand-samsung" />
                             <label className="form-check-label" htmlFor="brand-samsung">SamSung</label>
                         </div>
-                    </div>
-                    <div className="row m-1">
                         <div className="form-check">
                             <input type="checkbox" className="form-check-input" name="brand-VinSmart" id="brand-VinSmart" />
                             <label className="form-check-label" htmlFor="brand-VinSmart">VinSmart </label>

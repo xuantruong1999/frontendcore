@@ -1,11 +1,38 @@
 .wrapper{
-    padding-right: 0 !important;
-    margin-bottom: 15px !important;
-    background-color: #fff;    
+    background-color: #fff;   
 }
 .item a {
     color: black !important;
 }
 .item:hover{
     box-shadow: rgb(0 0 0 / 10%) 1px 1px 20px;
+}
+.note-like {
+    background-color: rgb(242, 82, 32);
+    position: absolute;
+    left: 0;
+    top: .625rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    z-index: 1;
+}
+.note-content {
+    color: #fff;
+    font-size: .75rem;
+    line-height: .875rem;
 }

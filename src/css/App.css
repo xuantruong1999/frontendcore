@@ -2,7 +2,7 @@
   text-align: center;
 }
 #root{
-  background-color:#f5f5f5;
+  background-color:   ;
 }
 .App-logo {
   height: 40vmin;
@@ -20,7 +20,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;          
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(122, 96, 96);
