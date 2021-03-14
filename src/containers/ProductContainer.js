@@ -1,44 +1,27 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Product from '../components/Product';
-import AppContext from '../contexts/AppContext';
-import { axios } from "axios";
+const axios = require('axios').default;
+
+
 
 class ProductContainer extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             products: [],
-            searchString: {}
+            searchString: this.props.searchString,
         }
-
-        this.getData = this.getData.bind(this);
-    };
-
-    getData(){
-        return(
-            axios.get('http://localhost:3000/products')
-            .then((response) => {
-                debugger
-                var products = response.data.filter((product) => {
-                if (this.state.searchString === ''){
-                    return product;
-                }
-                else (product.name.toUpperCase().includes(this.state.searchString.toUpperCase()) || product.description.toUpperCase().includes(this.state.searchString.toUpperCase()))
-                // eslint-disable-next-line no-lone-blocks
-                {
-                    return product;
-                }
-                })
-                return products;
-            }) 
-            .catch( error => {console.log("ERROR: " + error)})
-        );
     }
 
-    setState({
-        products: getData
-    });
-
+    componentWillMount(){
+        axios.get('http://localhost:3000/products')
+            .then((response) => {
+                const data= response.data;
+                this.setState({products: data})
+            }) 
+            .catch( error => {console.log("ERROR: " + error)})
+    }
+   
     render(){
         return(
             <Product products = {this.state.products} />

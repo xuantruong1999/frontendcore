@@ -6,7 +6,7 @@ class AppProvider extends React.Component{
     {
         super(props);
         this.state = {
-            searchString: null
+            searchString: ''
         }
     };
     
