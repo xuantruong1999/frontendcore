@@ -20,10 +20,10 @@ class App extends React.Component {
             <div className="row">
               <SideBar />
                 <Switch>
-                      <Route path="/" exact component={ Home } />
-                      <Route path="/about" component={ About } />
-                      <Route path="/contact" component={ Contact } />
-                      <Route path="/products" component={ Product } />
+                    <Route path="/" exact component={ Home } />
+                    <Route path="/about" component={ About } />
+                    <Route path="/contact" component={ Contact } />
+                    <Route path="/products" component={ Product } />
                 </Switch>
             </div>
           </div>
