@@ -31,3 +31,11 @@ class AppProvider extends React.Component{
 }
 
 export default AppProvider;
+
+
+// (product) =>{
+//     if (keyWord.state.searchString === '')
+//         return product;
+//     else (product.name.toUpperCase().includes(keyWord.state.searchString.toUpperCase()) || product.description.toUpperCase().includes(keyWord.state.searchString.toUpperCase()))
+//         return product;
+// })

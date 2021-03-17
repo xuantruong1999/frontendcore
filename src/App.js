@@ -35,3 +35,5 @@ class App extends React.Component {
   }
 }
 export default App;
+
+// npx json-server --watch -p 3000  .\src\data\json-server-data.json
