@@ -1,15 +1,16 @@
 import React from 'react';
 import './css/App.css';
-import Product from './Components/Product';
-import Header from './Components/Header';
-import About from './Components/About';
-import Home from './Components/Home';
-import Footer from './Components/Footer';
-import Contact from './Components/Contact';
+import Product from './components/Product';
+import Header from './components/Header';
+import About from './components/About';
+import Home from './components/Home';
+import Footer from './components/Footer';
+import Contact from './components/Contact';
+import ProductContainer from './containers/ProductContainer';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import AppProvider from './Components/AppProvider';
-import SideBar from './Components/SideBar';
+import AppProvider from './components/AppProvider';
+import SideBar from './components/SideBar';
 class App extends React.Component {
   render(){
     return (
@@ -20,10 +21,10 @@ class App extends React.Component {
             <div className="row">
               <SideBar />
                 <Switch>
-                    <Route path="/" exact component={ Home } />
-                    <Route path="/about" component={ About } />
-                    <Route path="/contact" component={ Contact } />
-                    <Route path="/products" component={ Product } />
+                      <Route path="/" exact component={ Home } />
+                      <Route path="/about" component={ About } />
+                      <Route path="/contact" component={ Contact } />
+                      <Route path="/products" component={ ProductContainer } />
                 </Switch>
             </div>
           </div>

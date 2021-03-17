@@ -1,8 +1,7 @@
 import React from "react";
-import context from "react-bootstrap/esm/AccordionContext";
 import { Link } from 'react-router-dom';
-import AppContext from "../Contexts/AppContext";
 import Search from './Search';
+import AppContext from '../contexts/AppContext';
 
 class Header extends React.Component{
     constructor(props)

@@ -1,17 +1,17 @@
 import React from 'react';
-import AppContext from '../Contexts/AppContext';
+import AppContext from '../contexts/AppContext';
 
 class AppProvider extends React.Component{
     constructor(props)
     {
         super(props);
         this.state = {
-            searchString: null
+            searchString: ''
         }
     };
     
     getSearchstring = (kw = null) => {
-       if(kw != null || kw == ""){
+       if(kw != null || kw === ""){
             this.setState({searchString: kw})
       }
     } 
