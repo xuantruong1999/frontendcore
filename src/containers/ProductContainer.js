@@ -13,7 +13,7 @@ class ProductContainer extends React.Component{
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
         axios.get('http://localhost:3000/products')
             .then((response) => {
                 const data= response.data;
