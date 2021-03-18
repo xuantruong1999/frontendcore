@@ -1,17 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import Search from './Search';
-import AppContext from '../contexts/AppContext';
 
 class Header extends React.Component{
-    constructor(props)
-    {
-        super(props)
-        this.state = {
-            searchString: null,
-        }
-    }
-
     render() {
         return(
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -37,11 +28,7 @@ class Header extends React.Component{
                                 <Link className="nav-link" to={'/products'}>Products</Link>
                             </li>
                         </ul>
-                        <AppContext.Consumer>
-                           {
-                               (value) => (<Search onCallback={value.callBack}/>)
-                           }
-                        </AppContext.Consumer>
+                         <Search />
                     </div>
                 </div>
             </nav>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/sidebar.css';
-import $ from "jquery";
 import RangeSlider from './RangeSlider';
+
 class SideBar extends Component{
     constructor(props){
         super(props)
