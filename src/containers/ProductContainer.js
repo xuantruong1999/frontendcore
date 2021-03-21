@@ -1,8 +1,6 @@
-import { wait } from '@testing-library/dom';
 import { isEmptyObject } from 'jquery';
 import React from 'react';
 import Product from '../components/Product';
-import AppContext from "../contexts/AppContext";
 
 const axios = require('axios').default;
 class ProductContainer extends React.Component{

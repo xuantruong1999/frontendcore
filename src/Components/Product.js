@@ -1,10 +1,7 @@
-import { useContext } from 'react';
 import Item from './Item';
-
 
 export default function Product(props)
 {
-
     debugger
     return(
         <div className="col col-10">
