@@ -5,6 +5,7 @@ import Search from './Search';
 class Header extends React.Component{
     render() {
         return(
+            <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
                 <div className="container">
                     <a className="navbar-brand" href="https://google.com">
@@ -32,6 +33,7 @@ class Header extends React.Component{
                     </div>
                 </div>
             </nav>
+            </>
         );
     }
 }
