@@ -6,29 +6,28 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
 import ProductContainer from './containers/ProductContainer';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SideBar from './components/SideBar';
+import { Container, Row, Col } from "react-bootstrap";
 
 class App extends React.Component {
-  render(){
+  render() {
     return (
-        <Router>
-          <Header />
-          <div className="container">
-            <div className="row">
-              <SideBar />
-                <Switch>
-                      <Route path="/" exact component={ Home } />
-                      <Route path="/about" component={ About } />
-                      <Route path="/contact" component={ Contact } />
-                      <Route path="/products" component={ProductContainer} />
-                </Switch>
-            </div>
-          </div>
-          <Footer />
-        </Router>
+      <Router>
+        <Header />
+        <Container fluid>
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/products" component={ProductContainer} />
+              </Switch>
+        </Container>
+        <Footer />
+      </Router>
     );
   }
 }
 export default App;
+
+// npx json-server --watch -p 3000  .\src\data\json-server-data.json

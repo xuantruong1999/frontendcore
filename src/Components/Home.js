@@ -1,18 +1,25 @@
 import React from 'react';
+import { Row, Col, Container, Jumbotron } from "react-bootstrap";
+import '../css/home.css';
 
-class Home extends React.Component{
-  
-    render(){
-        return(
-            <div className="col col-lg-10">
-               <h1>Home</h1>
-               <div className="jumbotron jumbotron-fluid">
-                    <div className="container">
-                        <h1 className="display-4">BC APP JUMBOTRON</h1>
-                        <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                    </div>
-                </div>
-            </div>
+class Home extends React.Component {
+
+    render() {
+        return (
+            <>
+                <Jumbotron className="m-2 m-lg-4 m-md-3">
+                    <Container>
+                        <Row>
+                            <Col>
+                                <div>1</div>
+                            </Col>
+                            <Col>
+                                <div>2</div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Jumbotron>
+            </>
         );
     }
 }
