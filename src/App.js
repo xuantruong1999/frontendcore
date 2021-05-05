@@ -7,8 +7,8 @@ import Footer from './components/Footer';
 import Contact from './components/Contact';
 import ProductContainer from './containers/ProductContainer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SideBar from './components/SideBar';
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+
 
 class App extends React.Component {
   render() {
