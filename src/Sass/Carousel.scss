@@ -1,0 +1,27 @@
+@keyframes showSlideleft{
+    0% { transform: translateX(-100%); }
+    25% { transform: translateX(-100%); }
+    50% { transform: translateX(-60%); }
+    65% { transform: translateX(-35%); }
+    95% { transform: translateX(-5%); }
+    100% { transform: translateX(0%); }
+}
+
+@keyframes hiddenSlide{
+    0% { transform: translateX(95%); }
+    100% { transform: translateX(100%); }
+}
+
+img.image-slider {
+    animation: showSlideleft .2s ease-in-out;
+}
+
+img.image-slider{
+    position: absolute;
+    top:0;
+    left: 0;
+    display: none;
+    
+   
+}
+
