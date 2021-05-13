@@ -40,6 +40,7 @@ export default function Carousel(){
                }
             </div>
             <button className="position-absolute" onClick={previous} style={{height: "70px", left: "0px", top:"40%"}}>{"<"}</button>
+            
             <button className="position-absolute" onClick={next} style={{height: "70px", right: "0px", top:"40%"}}>{">"}</button>
         </div>
     </>
