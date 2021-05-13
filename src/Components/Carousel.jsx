@@ -26,6 +26,7 @@ export default function Carousel(){
         <div className="h-100 position-relative w-100 rounded">
             <img src={images[currentIndex-1]} alt="img" className="img-fluid h-100 w-100 rounded image-slider"/> 
             <button className="position-absolute" onClick={previous} style={{height: "70px", left: "0px", top:"40%"}}>{"<"}</button>
+            
             <button className="position-absolute" onClick={next} style={{height: "70px", right: "0px", top:"40%"}}>{">"}</button>
         </div>
     </>
