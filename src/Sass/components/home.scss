@@ -9,17 +9,18 @@
     
     #banner-carousel{
         @include fix-layout();
+
     }
 
     .banner-image-up{
         @include fix-layout(50%, 100% );        
-        background-image: url("../images/banner-img-up.jpg");
+        background-image: url("../../images/banner-img-up.jpg");
         background-repeat: none;
         background-size: cover;
     }
 
     .banner-image-down{
         @extend .banner-image-up;
-        background-image: url("../images/banner-img-down.jpg");
+        background-image: url("../../images/banner-img-down.jpg");
     }  
 }
