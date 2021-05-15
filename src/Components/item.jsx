@@ -1,5 +1,4 @@
-import React from 'react'
-import '../css/product.css';
+import React from 'react';
 
 export default function Item(props){
     return (
