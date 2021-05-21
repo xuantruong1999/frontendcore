@@ -15,7 +15,7 @@ class Home extends React.Component {
             <>
                 <div className="mx-auto-2 mx-auto-lg-4 mx-auto-md-3 p-3" id="banner"> 
                     <Row className="h-100">
-                        <Col xs={7} className="pr-0 h-100 pr-1" id="banner-carousel">
+                        <Col xs={7} className="pr-0 h-100 pr-1">
                             <Carousel></Carousel>
                         </Col>
                         <Col xs={5} className="pl-0 h-100 rounded">
