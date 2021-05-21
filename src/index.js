@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
 import App from './App.js';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap';
 import { createStore } from 'redux';
 import { Provider } from "react-redux";
 import rootReducer from "./reducers";
+import "./Sass/base/index.scss";
 
 var store = createStore(
   rootReducer,

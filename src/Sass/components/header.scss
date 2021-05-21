@@ -1,0 +1,17 @@
+nav{
+    background-color: #EFF5FB;
+}
+.item-menu{
+    color: black!important;
+}
+img#logo{
+    border: none;
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
+    background-position: center;
+    &:hover{
+        transform: scale(1.1);
+        transition:  all .2s ease-in-out;
+    }
+}

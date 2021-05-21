@@ -7,19 +7,34 @@
     height: 260px;
     padding:0;
     
+<<<<<<< HEAD:src/Sass/home.scss
     .banner-carousel{
         @include fix-layout();
     }
 
+=======
+>>>>>>> d48f701e4bede5b1d628156376410ef6dab56701:src/Sass/components/home.scss
     .banner-image-up{
         @include fix-layout(50%, 100% );        
-        background-image: url("../images/banner-img-up.jpg");
+        background-image: url("../../images/banner-img-up.jpg");
         background-repeat: none;
         background-size: cover;
     }
 
     .banner-image-down{
         @extend .banner-image-up;
-        background-image: url("../images/banner-img-down.jpg");
+        background-image: url("../../images/banner-img-down.jpg");
     }  
 }
+
+//category style sheets
+.category{
+    text-align: center;
+    height: 120px;
+        
+}
+
+
+
+
+@import "../base/_base";
