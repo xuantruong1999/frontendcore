@@ -1,0 +1,70 @@
+.coupon{
+    right: 0;
+    background-color: #ffd839;
+    width:50px;
+    z-index: 1000000;
+    color: white;
+    height: 55px;
+    text-align: center;
+    border-radius: 0 5px 0 0;
+    opacity: 0.7;
+    font-weight: bold;
+    &:after{
+        content: "";
+        width: 0;
+        height: 0;
+        left: 0;
+        bottom: -4px;
+        position: absolute;
+        border-color: transparent rgba(255,212,36,.9);
+        border-style: solid;
+        border-width: 0 25px 4px;
+        opacity: 0.7;
+    }
+}
+
+.like-flash{
+    padding: 1px 5px;
+    left: -1;
+    top: 15px;
+    font-weight: 16px;
+    color:white;
+    height: auto;
+    width: fix-content;
+    background-color: rgb(242, 82, 32);
+    &:before{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        bottom: -.1875rem;
+        border-top: .1875rem solid;
+        border-left: .1875rem solid transparent;
+        -webkit-filter: brightness(60%);
+        filter: brightness(60%);
+    }
+
+}
+div#item{
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    padding: 0 2.5px;
+    box-shadow: 5px 5px 2px whitesmoke;
+    
+    a{
+        text-decoration: none!important;
+       color: black
+    }
+    
+    &:hover{
+        border-radius: 5px;
+        border: rgb(243, 91, 91) solid 1px;
+        transform: scale(1.01);
+        transition:  all .2s ease-in-out;
+    }
+    
+}
+div.card-body{
+    padding: 10px 10px;
+}
+

@@ -8,17 +8,16 @@ export default function Slider(){
     const images = [slider1, slider2, slider3];
     return(
         <>
-            <Carousel className="rounded">
+            <Carousel className="h-100">
                 {
                     images.map(function(image, index){
                         return(
                             <Carousel.Item key={index} className="rounded">
                                 <img
-                                className="d-block w-100 rounded"
+                                className="d-block w-100 h-100 rounded"
                                 src={image}
                                 alt="Second slide"
                                 />
-                              
                             </Carousel.Item>
                         );
                     })

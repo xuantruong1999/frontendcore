@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import Contact from './components/Contact';
 import ProductContainer from './containers/ProductContainer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Container } from "react-bootstrap";
+import { Container, Row} from "react-bootstrap";
 import './Sass/app.scss';
 
 
