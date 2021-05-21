@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Spinner } from "react-bootstrap";
 import slider1 from "../images/slider-1.png";
 import slider2 from "../images/slider-2.jpg";
 import slider3 from "../images/slider-3.jpg";
@@ -27,6 +28,17 @@ export default function Carousel(){
                 <img src={src} className={nameclass} alt=""/>
             </>
         );
+    };
+
+    const Dot = ({active}) => {
+        let nameClass = active ? "active" : "";
+        return <span className={nameClass}></span>;
+    };
+
+    const Dots = ({currentIndex, images}) =>{
+        images.map((currentIndex, index) => ({
+            <Dot key={index} active={currentIndex == index} />
+        }));
     }
 
     return(
@@ -39,6 +51,7 @@ export default function Carousel(){
                    })
                }
             </div>
+            <Dots currentIndex={currentIndex} images ={images} />
             <button className="position-absolute" onClick={previous} style={{height: "70px", left: "0px", top:"40%"}}>{"<"}</button>
             <button className="position-absolute" onClick={next} style={{height: "70px", right: "0px", top:"40%"}}>{">"}</button>
         </div>
