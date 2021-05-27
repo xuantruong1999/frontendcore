@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap';
 import { createStore } from 'redux';
 import { Provider } from "react-redux";
 import rootReducer from "./reducers";
+import "./Sass/base/index.scss";
 
 var store = createStore(
   rootReducer,
