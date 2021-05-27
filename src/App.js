@@ -4,11 +4,11 @@ import About from './components/About';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import Login from './components/Login';
 import ProductContainer from './containers/ProductContainer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Container, Row} from "react-bootstrap";
+import { Container} from "react-bootstrap";
 import './Sass/app.scss';
-
 
 class App extends React.Component {
   render() {
@@ -22,6 +22,7 @@ class App extends React.Component {
                   <Route path="/about" component={About} />
                   <Route path="/contact" component={Contact} />
                   <Route path="/products" component={ProductContainer} />
+                  <Route path="/users/Login" component={Login} />
                 </Switch>
           </Container>
         </main>

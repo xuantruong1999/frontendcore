@@ -30,6 +30,9 @@ class Header extends React.Component{
                             <li className="nav-item">
                                 <Link className="nav-link item-menu" to={'/products'}>Products</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link item-menu" to={'/users/login'}>Login</Link>
+                            </li>
                         </ul>
                          <Search />
                     </div>
