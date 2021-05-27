@@ -1,5 +1,5 @@
 const initialState = {
-    kw: ""
+    kw: "",
 }
 const Search = (state = initialState, searchAction) => {
     switch(searchAction.type){

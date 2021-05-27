@@ -23,6 +23,9 @@
     }
 }
 
+img.card-img-top{
+    object-fit: contain;
+}
 .like-flash{
     padding: 1px 5px;
     left: -1;
@@ -31,6 +34,7 @@
     color:white;
     height: auto;
     width: fix-content;
+    opacity: 0.7;
     background-color: rgb(242, 82, 32);
     opacity: 0.7;
     &:before{
@@ -69,22 +73,28 @@ div#item{
 }
 
 div.card-body{
-    padding: 10px 10px;
-    .card-text{
+    padding: 5px 10px;
+    font: 14px;
+    div.intro-product{
+        height: 50px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
         overflow: hidden;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        text-overflow: ellipsis;
-        max-height: 150px;
+        -webkit-line-clamp: 2;
     }
-    div.price{
+    
+    .price{
         color:rgb(242, 82, 32);
-        font: bolder;
+        font: border;
     }
-    div.prev-price{
-        color:rgb(236, 229, 229);
-        font-size: 12px;
-        
+    
+    .pre-price{
+        color: rgb(168, 164, 164);
     }
 }
-
+div.address{
+    color: rgb(168, 164, 164);
+    float: right;
+    padding: 5px;
+}
