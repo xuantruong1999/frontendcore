@@ -5,8 +5,10 @@ export const searchAction = (kw) =>({
     payload: kw
 }); 
 
-export const loginAction = ({username, password}) =>({
+export const loginAction = (userName, password) =>({
     type: types.LOGIN_ACTION,
-    payload: {username, password}
-       
+    payload: {
+        userName: userName,
+        password: password
+    }
 });

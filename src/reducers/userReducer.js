@@ -8,9 +8,8 @@ var initialInforLogin = {
 const Login = (state = initialInforLogin, loginAction) =>{
     switch(loginAction.type)
     {
-        case types.LOGIN_ACTION: {
-            return {...state, inforLogin: loginAction.payLoad};
-        }
+        case types.LOGIN_ACTION:
+            return (loginAction.payload);
         default:
             return state;
 
