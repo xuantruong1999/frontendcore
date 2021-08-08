@@ -15,7 +15,7 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
-        <main id="main">
+        <main id="main" className="my-4">
           <Container fluid>
                 <Switch>
                   <Route path="/" exact component={Home} />
@@ -26,12 +26,9 @@ class App extends React.Component {
                 </Switch>
           </Container>
         </main>
-        
         <Footer />
       </Router>
     );
   }
 }
 export default App;
-
-// npx json-server --watch -p 3000  .\src\data\json-server-data.json

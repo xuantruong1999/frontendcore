@@ -1,24 +1,16 @@
 import '../Sass/components/login.scss';
 import {useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {loginAction} from '../action/Action';
 
 export default function Login(){
     var[username, changeUserName] = useState("");
     var[password, changePassword] = useState("");
-    const dispath = useDispatch();
-    const usernamre = useSelector( state => state.userLogin.username);
 
     const handleSubmit = (event) =>{
-        const action = loginAction(username, password);
-        dispath(action);
-        event.preventDefault();
-        return false;
+ 
         
     }
     return(
         <>
-        <h1>Xin Chào: {usernamre}</h1>
             <section className="" id="wrapper-login-form" >
                 <form className="border" onSubmit={handleSubmit}>
                     <h1 className="text-center">Đăng Nhập</h1>

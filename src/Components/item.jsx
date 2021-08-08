@@ -7,20 +7,20 @@ import { faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 
 export default function Item(props){
     return (
-        <div className="col col-sm-4 col-md-3 position-relative mr-3 mb-3" id="item"  key={props.product.key}>
+        <div className="col col-sm-4 col-md-3 position-relative mr-3 mb-3" id="item">
+            <a href={ props.product.id }>
             <p className="coupon position-absolute">
                 <span  className="d-block text-center" style={{color: "red"}}>35%</span>
                 <span>Giảm</span>
             </p>
             <span className="position-absolute like-flash">Yêu thích</span>
-            <a href={ props.product.key }>
-                <img className="card-img-top" src={props.product.link} alt="Card cap img-responsive" />
+                <img className="card-img-top" src={props.product.image} alt="Card cap img-responsive" />
                 <div className="card-body">
-                    <div className="intro-product"><p className="card-text text-justify">{props.product.name + " " + props.product.description }</p></div>
+                    <div className="intro-product"><p className="card-text text-justify">{props.product.name}</p></div>
                     <div className="price"><strike className="pre-price">{props.product.price}</strike>&nbsp;&nbsp;{props.product.price}</div>
                     <div className="rating">
-                        <Box component="fieldset" mb={1} borderColor="transparent">
-                            <Rating name="read-only" value={4} readOnly size="small" />
+                        <Box component mb={1} borderColor="transparent">
+                            <Rating name="read-only" value={props.product.rating} readOnly size="small" />
                         </Box>
                     </div>
                 </div>
