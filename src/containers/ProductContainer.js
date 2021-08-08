@@ -1,10 +1,8 @@
-import { isEmptyObject } from 'jquery';
 import React from 'react';
 import Item from '../components/Item';
 import { connect } from 'react-redux';
-import { Row } from 'react-bootstrap';
+import {getAll} from '../services/httpService';
 
-const axios = require('axios').default;
 class ProductContainer extends React.Component {
     constructor(props) {
         super(props)
@@ -14,51 +12,41 @@ class ProductContainer extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/products')
-            .then((response) => {
-                const data = response.data;
-                if (!isEmptyObject(data)) {
-                    var arrayTemp = [];
-                    for (var prop in data) {
-                        arrayTemp.push(data[prop]);
-                    }
-                    this.setState({ products: arrayTemp });
-                }
+        getAll('http://127.0.0.1:5000/api/products')
+            .then((res) => {
+                return this.setState({products: res.data});
             })
-            .catch(error => { console.log("ERROR: " + error) })
+            .catch(err => {
+                return console.log("Please check error:" + err);
+            })      
     };
 
     render() {
-        const products = this.state.products;
-        var finallyListproduct = [];
-        if (this.props.keyWord.kw !== "") {
-            let kw = this.props.keyWord.kw;
-            products.forEach(product => {
-                if (product.name.toUpperCase() === kw.toUpperCase() || product.description.toUpperCase().includes(kw.toUpperCase())) {
-                    finallyListproduct.push(product);
-                }
-            });
-        }
-        else {
-            finallyListproduct = products;
-        }
-
-        if (finallyListproduct.length > 0) {
+        var kw = this.props.keyWord.kw;
+        var products = this.state.products;
+        debugger
+        if(products.length > 0){
+            var result = products.filter(product => product.name.toUpperCase() === kw.toUpperCase() 
+            || product.description.toUpperCase().includes(kw.toUpperCase()))                
             return (
                 <>
-                    <Row>
-                        {
-                            finallyListproduct.map(function (product) {
-                                return <Item product={product} key={product.key} />
-                            })
-                        }
-                    </Row>
+                    <div className="container">
+                        <div className="row">
+                            {
+                                result.map(function (product) {
+                                    return <Item product={product} key={product.id} />
+                                })
+                            }
+                        </div>
+                    </div>
                 </>
             )
         }
-        else {
-            return (<p>Loading products failed, Please check connect to server</p>)
+        else{
+            return <div></div>
         }
+        
+        
     }
 }
 

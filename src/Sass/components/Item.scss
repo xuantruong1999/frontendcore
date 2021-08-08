@@ -2,7 +2,7 @@
     right: 0;
     background-color: #ffd839;
     width:50px;
-    z-index: 1000000;
+    z-index: 100;
     color: white;
     height: 55px;
     text-align: center;
@@ -36,6 +36,7 @@ img.card-img-top{
     width: fix-content;
     opacity: 0.7;
     background-color: rgb(242, 82, 32);
+    opacity: 0.7;
     &:before{
         content: "";
         display: inline-block;
@@ -49,12 +50,13 @@ img.card-img-top{
     }
 
 }
+
 div#item{
-    border: 1px solid whitesmoke;
+    border: 1px solid rgb(238, 231, 231);
     border-radius: 5px;
-    padding: 0 2.5px;
-    box-shadow: 5px 5px 2px whitesmoke;
-    
+    padding: 0 0px;
+    min-width: 186px;
+    max-width: 20%;
     a{
         text-decoration: none!important;
        color: black
@@ -65,10 +67,12 @@ div#item{
         border: rgb(243, 91, 91) solid 1px;
         transform: scale(1.01);
         transition:  all .2s ease-in-out;
+        box-shadow: 5px 5px 2px whitesmoke;
     }
     
 }
-div.card-body{
+
+div.card-body {
     padding: 5px 10px;
     font: 14px;
     div.intro-product{
@@ -89,8 +93,11 @@ div.card-body{
         color: rgb(168, 164, 164);
     }
 }
+
 div.address{
     color: rgb(168, 164, 164);
     float: right;
     padding: 5px;
 }
+
+

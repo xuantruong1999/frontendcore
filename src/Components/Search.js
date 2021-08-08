@@ -34,7 +34,7 @@ class Search extends Component {
 const mapDispatchToProps = (dispatch) => {
     return{
         search: (kw) => {
-            dispatch(searchAction(kw)) // map dispatch to props
+            return dispatch(searchAction(kw)); // map dispatch to props
         }
     }
 };
