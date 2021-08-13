@@ -1,27 +1,36 @@
-import exios from 'axios';
+import axios from 'axios';
+import querystring from 'query-string';
+
 /**
  * 
- * @param {url} endpoint 
- * if request contain data return json object otherwire false
+ * as a midleware for handle request, response return from api server
  */
+const axiosClient = axios.create({
+    baseURL: process.env.REACT_APP_URL_API_DEV,
+    headers: {
+        'content-type': 'application/json'
+    },
+    paramsSerializer: params => querystring.stringify(params),
+});
 
-const getAll =  async function getAll(endpoint){
-    var result = await exios.get(endpoint)
-    return result;
-}
+axiosClient.interceptors.request.use(function (config) {
+    // Do something before request is sent
+    return config;
+  }, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  });
 
-const getById = async function getById(endpoint){
-     var result = await exios.get(endpoint)
-     .then(response =>{
-         if(response.status === 200){
-             return (response.data);
-         }
-         else{
-             return {title: response.title};
-         }
-     })
-     return result;
-                
-}
+// Add a response interceptor
+axiosClient.interceptors.response.use(function (response) {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    return response;
+  }, function (error) {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    return Promise.reject(error);
+  });
 
-export {getAll, getById}
+
+export default axiosClient;

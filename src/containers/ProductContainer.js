@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from '../components/Item';
 import { connect } from 'react-redux';
-import { getAll } from '../services/httpService';
+import { getAll } from '../api/productAPI';
 import * as action from '../action/Action';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
@@ -15,7 +15,7 @@ class ProductContainer extends React.Component {
     GetProducts(){
         return dispatch => {
             dispatch(action.getProductsBegin());
-            getAll('http://127.0.0.1:5000/api/products')
+            getAll()
             .then((res) => {
                 if(res.status === 200)
                     return res;
@@ -65,8 +65,6 @@ class ProductContainer extends React.Component {
                 </div>
             ) 
         }
-
-       
     }
     
     render() {
