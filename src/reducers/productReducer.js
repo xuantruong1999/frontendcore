@@ -10,7 +10,11 @@ var initialState = {
 const productReducer = (state = initialState, action) =>{
     switch(action.type){
         case types.GET_PRODUCT_DETAILS_SUCCESS:
-            return {id: action.payload.id};
+            return {
+                ...state,
+                id: action.payload.id,
+                
+            }
         case types.GET_PRODUCTS_BEGIN:
             return({
                 ...state,
