@@ -8,6 +8,7 @@ import Login from './components/Login';
 import ProductContainer from './containers/ProductContainer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Container} from "react-bootstrap";
+import ProductDetailsContainer from "./containers/ProductDetailsContainer";
 import './Sass/app.scss';
 
 class App extends React.Component {
@@ -21,6 +22,7 @@ class App extends React.Component {
                   <Route path="/" exact component={Home} />
                   <Route path="/about" component={About} />
                   <Route path="/contact" component={Contact} />
+                  <Route path='/product/:id' exact component={ProductDetailsContainer} />
                   <Route path="/products" component={ProductContainer} />
                   <Route path="/users/Login" component={Login} />
                 </Switch>

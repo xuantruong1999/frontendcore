@@ -10,8 +10,16 @@ const getAll =  async function getAll(endpoint){
     return result;
 }
 
-const getById = function getById(endpoint){
-     var result = exios.get(endpoint)
+const getById = async function getById(endpoint){
+     var result = await exios.get(endpoint)
+     .then(response =>{
+         if(response.status === 200){
+             return (response.data);
+         }
+         else{
+             return {title: response.title};
+         }
+     })
      return result;
                 
 }

@@ -1,7 +1,7 @@
 const initialState = {
     kw: "",
 }
-const Search = (state = initialState, searchAction) => {
+const searchReducer = (state = initialState, searchAction) => {
     switch(searchAction.type){
         case 'SEARCH_ACTION':
             return({...state, kw: searchAction.payload});
@@ -10,4 +10,4 @@ const Search = (state = initialState, searchAction) => {
     }
 }
 
-export default Search
+export default searchReducer

@@ -1,58 +1,86 @@
 import React from 'react';
 import Item from '../components/Item';
 import { connect } from 'react-redux';
-import {getAll} from '../services/httpService';
+import { getAll } from '../services/httpService';
+import * as action from '../action/Action';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Alert from '@material-ui/lab/Alert';
 
 class ProductContainer extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            products: [],
-        }
+    
+    componentDidMount() {
+        this.props.dispatch(this.GetProducts());
     }
 
-    componentDidMount() {
-        getAll('http://127.0.0.1:5000/api/products')
+    GetProducts(){
+        return dispatch => {
+            dispatch(action.getProductsBegin());
+            getAll('http://127.0.0.1:5000/api/products')
             .then((res) => {
-                return this.setState({products: res.data});
+                if(res.status === 200)
+                    return res;
+                else{
+                    var error = "Unable get products";
+                    throw(error);
+                }
+            })
+            .then((res) => {
+                dispatch(action.getProductsSuccess(res))
             })
             .catch(err => {
-                return console.log("Please check error:" + err);
-            })      
-    };
+                console.log(err)
+                dispatch(action.getProductsFails(err));
+            })
+        }
+    }
 
-    render() {
-        var kw = this.props.keyWord.kw;
-        var products = this.state.products;
-        debugger
-        if(products.length > 0){
-            var result = products.filter(product => product.name.toUpperCase() === kw.toUpperCase() 
-            || product.description.toUpperCase().includes(kw.toUpperCase()))                
-            return (
-                <>
-                    <div className="container">
-                        <div className="row">
-                            {
-                                result.map(function (product) {
-                                    return <Item product={product} key={product.id} />
-                                })
-                            }
-                        </div>
+    showProducts(){
+        let {listProducts, keyWord, status, message} = this.props;
+        if(status === "success"){
+            if( keyWord !== ""){
+                listProducts = listProducts.filter(product => product.name.toUpperCase().includes(keyWord.toUpperCase())
+                || product.description.toUpperCase().includes(keyWord.toUpperCase()))
+            }
+            return(
+                <div className="container">
+                    <div className="row">
+                        {
+                            listProducts.map(function (product) {
+                                return <Item product={product} key={product.id}></Item>
+                            })
+                        }
                     </div>
-                </>
-            )
+                </div>
+            );
+
+        }
+        else if(status === "fail"){
+            return <Alert severity="error">{message}</Alert>
         }
         else{
-            return <div></div>
+            // status === begin
+            return(
+                <div className="mx-auto align-center">
+                    <CircularProgress />
+                </div>
+            ) 
         }
-        
-        
+
+       
+    }
+    render() {
+        return (
+            this.showProducts()
+        );
     }
 }
-
+//Extracting data from state in store end then passing props gave by component
 const mapStatetoProps = state => {
     return {
-        keyWord: state.searchString
+        keyWord: state.searchString.kw,
+        listProducts: state.products.data,
+        status: state.products.status,
+        message: state.products.message
     };
 }
 

@@ -17,7 +17,8 @@ class Search extends Component {
     }
 
     handleSubmit(event){
-        this.props.search(this.state.searchString) // passing value kw to props
+        debugger
+        this.props.search(this.state.searchString) 
         event.preventDefault(); 
     }
     
