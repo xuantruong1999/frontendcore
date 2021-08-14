@@ -1,12 +1,11 @@
 
 function ProductDetails({ product }) {
-
     return (
         <>
             <div id="conver">
                 <div className="row">
                     <div id="image" className="col-md-4 col-sm-6">
-                        <img src={product.image} alt="product image" className="img-fluid" />
+                        <img src={product.image} alt="" className="img-fluid" />
                     </div>
                     <div id="product-infor" className="col-md-8 col-sm-6">
                         <div className="name">{product.name}</div>

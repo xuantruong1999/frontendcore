@@ -4,20 +4,11 @@ import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from 'react-redux';
-import * as action from '../action/Action';
 
 export default function Item({ product }) {
-    var dispatch = useDispatch();
-    const handleItemClick = (e) =>{
-        dispatch()
-        dispatch(action.getProductDetailSuccess(e.currentTarget.id));
-        e.preventDefault();
-    }
-
     return (
         <div className="col col-sm-4 col-md-2 position-relative mr-3 mb-3" id="item">
-            <a id={product.id} onClick={handleItemClick} href={"product/" + product.id}>
+            <a id={product.id} href={"product/details/" + product.id}>
                 <p className="coupon position-absolute">
                     <span className="d-block text-center" style={{ color: "red" }}>35%</span>
                     <span>Giảm</span>

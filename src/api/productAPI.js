@@ -8,7 +8,7 @@ const getAll = (params = initialParams) => {
 }
 
 const getById = (id) => {
-    const url = "/products";
+    const url = "/products/details";
     return axiosClient.get(url, {params: {
         id
     }});
