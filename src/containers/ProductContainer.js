@@ -2,12 +2,12 @@ import React from 'react';
 import Item from '../components/Item';
 import { connect } from 'react-redux';
 import { getAll } from '../api/productAPI';
-import * as action from '../action/Action';
+import * as action from '../actions/Action';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
 
 class ProductContainer extends React.Component {
-    
+
     componentDidMount() {
         this.props.dispatch(this.GetProducts());
     }
@@ -28,7 +28,6 @@ class ProductContainer extends React.Component {
                 dispatch(action.getProductsSuccess(res))
             })
             .catch(err => {
-                console.log(err)
                 dispatch(action.getProductsFails(err));
             })
         }
@@ -36,6 +35,7 @@ class ProductContainer extends React.Component {
 
     showProducts(){
         let {listProducts, keyWord, status, message} = this.props;
+        debugger
         if(status === "success"){
             if( keyWord !== ""){
                 listProducts = listProducts.filter(product => product.name.toUpperCase().includes(keyWord.toUpperCase())
@@ -52,19 +52,16 @@ class ProductContainer extends React.Component {
                     </div>
                 </div>
             );
-
         }
         else if(status === "fail"){
             return <Alert severity="error">{message}</Alert>
         }
         else{
-            // status === begin
             return(
-                <div className="mx-auto align-center">
-                    <CircularProgress />
-                </div>
-            ) 
+                <CircularProgress />
+            )
         }
+       
     }
     
     render() {
@@ -73,6 +70,7 @@ class ProductContainer extends React.Component {
         );
     }
 }
+
 //Extracting data from state in store end then passing props gave by component
 const mapStatetoProps = state => {
     return {

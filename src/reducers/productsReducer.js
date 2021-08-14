@@ -1,20 +1,14 @@
 import * as types from '../constants/ActionTypes';
 
 var initialState = { 
-    id: "",
-    products: [],
     status: "begin",
-    message: ""
+    message: "",
+    data: {},
 }
 
-const productReducer = (state = initialState, action) =>{
+const productsReducer = (state = initialState, action) =>{
+    debugger
     switch(action.type){
-        case types.GET_PRODUCT_DETAILS_SUCCESS:
-            return {
-                ...state,
-                id: action.payload.id,
-                
-            }
         case types.GET_PRODUCTS_BEGIN:
             return({
                 ...state,
@@ -31,10 +25,11 @@ const productReducer = (state = initialState, action) =>{
             return({
                 ...state,
                 status: action.payload.status,
-                data: action.payload.data
+                data: action.payload.data,
+                message: ""
             })
         default:
             return state;
     }
 }
- export default productReducer;
+ export default productsReducer;

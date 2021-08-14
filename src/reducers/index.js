@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 import searchReducer  from './searchReducer';
 import userReducer from './userReducer';
-import productReducer from './productReducer';
+import productsReducer from './productsReducer';
+import productDetailReducer from "./productDetailReducer";
 
 export default combineReducers({
     searchString: searchReducer,
     userLogin: userReducer,
-    products: productReducer
+    products: productsReducer,
+    product: productDetailReducer,
 })
 
