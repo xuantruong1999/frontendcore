@@ -35,7 +35,6 @@ class ProductContainer extends React.Component {
 
     showProducts(){
         let {listProducts, keyWord, status, message} = this.props;
-        debugger
         if(status === "success"){
             if( keyWord !== ""){
                 listProducts = listProducts.filter(product => product.name.toUpperCase().includes(keyWord.toUpperCase())
