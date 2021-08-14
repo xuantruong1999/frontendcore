@@ -20,7 +20,6 @@ export default function ProductDetailsContainer({match}) {
                 return dispatch(action.getProductDetailSuccess(data))
             })
             .catch(err => {
-                console.log(err)
                 return dispatch(action.getProductDetailFails(err))
             })
         }
