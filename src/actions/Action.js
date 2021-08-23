@@ -6,11 +6,20 @@ export const searchAction = (kw) => ({
 });
 
 //User Action
-export const loginAction = (userName, password) => ({
-    type: types.LOGIN_ACTION,
+export const loginSuccess = (user) => ({
+    type: types.LOGIN_SUCCESS,
     payload: {
-        userName: userName,
-        password: password
+        username: user.UserName,
+        avatar: user.Avatar,
+        phonenumber: user.PhoneNumber,
+        email: user.Email,
+    }
+});
+
+export const loginFails = (err) =>({
+    type: types.LOGIN_FAILS,
+    payload: {
+        message: err.message,
     }
 });
 
@@ -40,7 +49,7 @@ export const getProductsSuccess = (products) => ({
     }
 });
 
-//Details
+//Get product details with id 
 export const getProductDetailSuccess = (product) => ({
     type: types.GET_PRODUCT_DETAILS_SUCCESS,
     payload: {

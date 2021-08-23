@@ -1,6 +1,7 @@
 export const SEARCH_ACTION = "SEARCH_ACTION";
 //User Action type
-export const LOGIN_ACTION = "LOGIN_ACTION";
+export const LOGIN_FAILS = "LOGIN_FAILS"; 
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 //Product Action type
 export const GET_PRODUCTS_BEGIN = "GET_PRODUCTS_BEGIN";
 export const GET_PRODUCTS_SUCCESS = "GET_PRODUCTS_SUCCESS";

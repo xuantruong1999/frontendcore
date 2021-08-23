@@ -1,20 +1,33 @@
 import * as types from '../constants/ActionTypes';
 
-var initialInforLogin = {
+var initial = {
     username: null,
-    password: null,
+    avatar: "",
+    phonenumber: "",
+    message: "",
+    isLogin: false
 };
 
-const Login = (state = initialInforLogin, loginAction) =>{
-    switch(loginAction.type)
-    {
-        case types.LOGIN_ACTION:
-            return (loginAction.payload);
+const userReducer = (state = initial, action) => {
+    switch (action.type) {
+        case types.LOGIN_SUCCESS:
+            return {
+                ...initial,
+                username: action.payload.username,
+                avatar: action.payload.avatar,
+                phonenumber: action.payload.phonenumber,
+                email: action.payload.email,
+                isLogin: true
+            }
+        case types.LOGIN_FAILS:
+            return {
+                ...initial,
+                message: action.payload.message,
+            }
         default:
             return state;
-
     }
-} 
+}
 
-export default Login
+export default userReducer
 

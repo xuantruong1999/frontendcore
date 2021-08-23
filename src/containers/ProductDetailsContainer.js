@@ -5,9 +5,11 @@ import ProductDetails from "../components/ProductDetails";
 import * as action from "../actions/Action";
 import Alert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {useParams} from 'react-router-dom';
 
-export default function ProductDetailsContainer({match}) {
+export default function ProductDetailsContainer() {
     var dispatch = useDispatch();
+    var {id} = useParams();
     var product = useSelector(state => state.product.data)
     var status = useSelector(state => state.product.status)
     var message = useSelector(state => state.product.message)
@@ -26,7 +28,7 @@ export default function ProductDetailsContainer({match}) {
     }
 
     useEffect( () =>{
-        dispatch(getProduct(match.params.id))
+        dispatch(getProduct(id))
     }, []);
 
     if (status === "fail") {

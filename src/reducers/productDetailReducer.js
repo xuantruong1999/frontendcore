@@ -7,7 +7,6 @@ var initialState = {
 }
 
 const productDetailReducer = (state = initialState, action) =>{
-    debugger
     switch(action.type){
         case types.GET_PRODUCT_DETAILS_SUCCESS:
             return {

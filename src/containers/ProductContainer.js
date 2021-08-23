@@ -45,7 +45,7 @@ class ProductContainer extends React.Component {
                     <div className="row">
                         {
                             listProducts.map(function (product) {
-                                return <Item product={product} key={product.id}></Item>
+                                return <Item product={product} key={product.Id}></Item>
                             })
                         }
                     </div>
