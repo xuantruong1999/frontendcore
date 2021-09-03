@@ -37,8 +37,8 @@ class ProductContainer extends React.Component {
         let {listProducts, keyWord, status, message} = this.props;
         if(status === "success"){
             if( keyWord !== ""){
-                listProducts = listProducts.filter(product => product.name.toUpperCase().includes(keyWord.toUpperCase())
-                || product.description.toUpperCase().includes(keyWord.toUpperCase()))
+                listProducts = listProducts.filter(product => product.Name.toUpperCase().includes(keyWord.toUpperCase())
+                || product.Description.toUpperCase().includes(keyWord.toUpperCase()))
             }
             return(
                 <div className="container">
@@ -66,7 +66,7 @@ class ProductContainer extends React.Component {
     render() {
         return (
             this.showProducts()
-        );
+    );
     }
 }
 

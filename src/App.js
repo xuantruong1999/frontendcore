@@ -1,9 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
-import About from './components/About';
 import Home from './components/Home';
 import Footer from './components/Footer';
-import Contact from './components/Contact';
 import Login from './components/Login';
 import ProductContainer from './containers/ProductContainer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -20,8 +18,6 @@ class App extends React.Component {
           <Container fluid>
                 <Switch>
                   <Route path="/" exact component={Home} />
-                  <Route path="/about" component={About} />
-                  <Route path="/contact" component={Contact} />
                   <Route path="/products" component={ProductContainer} />
                   <Route path='/product/details/:id' exact component={ProductDetailsContainer} />
                   <Route path="/users/Login" component={Login} />

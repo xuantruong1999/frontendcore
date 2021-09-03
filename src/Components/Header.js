@@ -11,7 +11,7 @@ class Header extends React.Component {
             <>
                 <nav className="navbar navbar-expand-lg navbar-dark static-top">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="https://google.com">
+                        <a className="navbar-brand" href="/">
                             <img src={Logo} alt="logo" id="logo" />
                         </a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,24 +19,20 @@ class Header extends React.Component {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                             <ul className="navbar-nav ml-auto">
+                                <Search />
                                 <li className="nav-item active">
                                     <Link className="nav-link item-menu" to={'/'}>Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link item-menu" to={'/about'}>About</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link item-menu" to={'/contact'}>Contact</Link>
-                                </li>
-                                <li className="nav-item">
                                     <Link className="nav-link item-menu" to={'/products'}>Products</Link>
-                                </li>
+                                </li>                 
                                 {
-                                    !isLogin && ( <li className="nav-item"><Link className="nav-link item-menu" to={'/users/login'}>Login</Link></li>)
+                                    !isLogin &&( <li className="nav-item"><Link className="nav-link item-menu" to={'/users/login'}>Login</Link></li>)
+                                }            
+                                {
+                                    isLogin && (<li className="nav-item"><Link className="nav-link item-menu" to={'/users/logout'}>Logout</Link></li>)
                                 }
-                               
                             </ul>
-                            <Search />
                         </div>
                     </div>
                 </nav>
