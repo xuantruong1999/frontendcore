@@ -16,6 +16,3 @@ export async function login(username, password){
     }
 }
 
-export function logout() {
-    localStorage.removeItem("token");
-  }

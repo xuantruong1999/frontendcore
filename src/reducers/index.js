@@ -3,10 +3,18 @@ import searchReducer  from './searchReducer';
 import userReducer from './userReducer';
 import productsReducer from './productsReducer';
 import productDetailReducer from "./productDetailReducer";
+import storage from 'redux-persist/lib/storage'
+import { persistReducer } from 'redux-persist'
+
+const authPersistConfig = {
+    key: 'auth',
+    storage,
+    blacklist: ['message']
+};
 
 export default combineReducers({
     searchString: searchReducer,
-    userLogin: userReducer,
+    userLogin: persistReducer(authPersistConfig, userReducer),
     products: productsReducer,
     product: productDetailReducer,
 })

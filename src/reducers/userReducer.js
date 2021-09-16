@@ -5,29 +5,41 @@ var initial = {
     avatar: "",
     phonenumber: "",
     message: "",
-    isLogin: false
+    isLogin: false,
+    status: null
 };
 
 const userReducer = (state = initial, action) => {
     switch (action.type) {
+        case types.LOGOUT:
+            return {                
+                ...initial,
+            }
+        case types.LOGIN_BEGIN:
+            return {
+                ...initial,
+                status: action.payload.status,
+            }
         case types.LOGIN_SUCCESS:
             return {
                 ...initial,
                 username: action.payload.username,
                 avatar: action.payload.avatar,
-                phonenumber: action.payload.phonenumber,
                 email: action.payload.email,
-                isLogin: true
+                isLogin: true,
+                status: action.payload.status,
             }
         case types.LOGIN_FAILS:
             return {
                 ...initial,
                 message: action.payload.message,
+                status: action.payload.status
             }
         default:
             return state;
     }
 }
+
 
 export default userReducer
 

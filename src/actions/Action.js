@@ -6,9 +6,19 @@ export const searchAction = (kw) => ({
 });
 
 //User Action
+
+export const loginBegin = () =>({
+    type: types.LOGIN_BEGIN,
+    payload: {
+        status: "begin",
+        message: "Loading..."
+    }
+});
+
 export const loginSuccess = (user) => ({
     type: types.LOGIN_SUCCESS,
     payload: {
+        status: "success",
         username: user.UserName,
         avatar: user.Avatar,
         phonenumber: user.PhoneNumber,
@@ -19,10 +29,14 @@ export const loginSuccess = (user) => ({
 export const loginFails = (err) =>({
     type: types.LOGIN_FAILS,
     payload: {
+        status: "fails",
         message: err.message,
     }
 });
 
+export const logOut = () => ({
+    type: types.LOGOUT,
+});
 //Product Action
 export const getProductsBegin = () => ({
     type: types.GET_PRODUCTS_BEGIN,

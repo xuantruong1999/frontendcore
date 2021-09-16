@@ -8,13 +8,18 @@ import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/CloseSharp';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { useHistory } from 'react-router-dom';
 
-export default function Login({ history }) {
+export default function Login() {
     var [username, changeUserName] = useState("");
     var [password, changePassword] = useState("");
     var [remember, changeRemember] = useState(false);
+    const history = useHistory();
     const [open, setOpen] = useState(true);
+
     var errMessage = useSelector(state => state.userLogin.message);
+    var status = useSelector(state => state.userLogin.status)
     var dispatch = useDispatch();
 
     const handleSubmit = (event) => {
@@ -26,6 +31,7 @@ export default function Login({ history }) {
 
     const signin = (username, password) => {
         return dispatch => {
+            dispatch(action.loginBegin())
             login(username, password)
                 .then(res => {
                     if (res.status === 200) {
@@ -44,32 +50,39 @@ export default function Login({ history }) {
                 })
         }
     }
+
+    if (status && status === "begin") {
+        return (
+            <CircularProgress />
+        );
+    }
     return (
         <>
             <section className="" id="wrapper-login-form" >
                 {
-                    errMessage && (     
+                    errMessage && (
                         <Collapse in={open} className="mb-2">
-                        <Alert
-                          severity="error"
-                          action={
-                            <IconButton
-                              aria-label="close"
-                              color="inherit"
-                              size="small"
-                              onClick={() => {
-                                setOpen(false);
-                              }}
+                            <Alert
+                                severity="error"
+                                action={
+                                    <IconButton
+                                        aria-label="close"
+                                        color="inherit"
+                                        size="small"
+                                        onClick={() => {
+                                            setOpen(false);
+                                        }}
+                                    >
+                                        <CloseIcon fontSize="inherit" />
+                                    </IconButton>
+                                }
                             >
-                              <CloseIcon fontSize="inherit" />
-                            </IconButton>
-                          }
-                        >
-                          {errMessage}
-                        </Alert>
-                      </Collapse>)
+                                {errMessage}
+                            </Alert>
+                        </Collapse>)
                 }
-                <form className="border" onSubmit={handleSubmit}>  
+
+                <form className="border" onSubmit={handleSubmit}>
                     <h1 className="text-center">Đăng Nhập</h1>
                     <div className="form-group">
                         <label htmlFor="username">User Name:</label>
