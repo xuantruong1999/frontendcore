@@ -8,34 +8,53 @@ import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/CloseSharp';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { useHistory } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
-export default function Login({ history }) {
+export default function Login(props) {
     var [username, changeUserName] = useState("");
     var [password, changePassword] = useState("");
     var [remember, changeRemember] = useState(false);
+    var [errMessage, setErroMessage] = useState("");
+    const history = useHistory();
     const [open, setOpen] = useState(true);
-    var errMessage = useSelector(state => state.userLogin.message);
-    var dispatch = useDispatch();
 
+   
+    var status = useSelector(state => state.userLogin.status)
+    var message = useSelector(state => state.userLogin.message)
+    var dispatch = useDispatch();
+    var {from} = props.location.state || {from: {pathname: "/"}};
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (username && password) {
+        if (username && password) 
+        { 
             dispatch(signin(username, password));
+            setErroMessage(message);
+        }
+        else if(username === ""){
+            setErroMessage("UserName is not null")
+            setOpen(true)
+        }
+        else if(password === ""){
+            setErroMessage("Password is not null")
+            setOpen(true)
         }
     }
 
     const signin = (username, password) => {
         return dispatch => {
+            dispatch(action.loginBegin())
             login(username, password)
                 .then(res => {
                     if (res.status === 200) {
                         dispatch(action.loginSuccess(res.data.user));
-                        history.push("/");
+                        history.push(from.pathname);
                     }
                     else if (res.status === 204) {
                         var err = {
-                            message: "Can not find the user ",
-                        }
+                            message: "UserName or Password is incorrect",
+                        };
                         dispatch(action.loginFails(err))
                     }
                 })
@@ -44,32 +63,39 @@ export default function Login({ history }) {
                 })
         }
     }
+
+    if (status && status === "begin") {
+        return (
+            <CircularProgress />
+        );
+    }
     return (
         <>
             <section className="" id="wrapper-login-form" >
                 {
-                    errMessage && (     
+                    errMessage && (
                         <Collapse in={open} className="mb-2">
-                        <Alert
-                          severity="error"
-                          action={
-                            <IconButton
-                              aria-label="close"
-                              color="inherit"
-                              size="small"
-                              onClick={() => {
-                                setOpen(false);
-                              }}
+                            <Alert
+                                severity="error"
+                                action={
+                                    <IconButton
+                                        aria-label="close"
+                                        color="inherit"
+                                        size="small"
+                                        onClick={() => {
+                                            setOpen(false);
+                                        }}
+                                    >
+                                        <CloseIcon fontSize="inherit" />
+                                    </IconButton>
+                                }
                             >
-                              <CloseIcon fontSize="inherit" />
-                            </IconButton>
-                          }
-                        >
-                          {errMessage}
-                        </Alert>
-                      </Collapse>)
+                                {errMessage}
+                            </Alert>
+                        </Collapse>)
                 }
-                <form className="border" onSubmit={handleSubmit}>  
+
+                <form className="border" onSubmit={handleSubmit}>
                     <h1 className="text-center">Đăng Nhập</h1>
                     <div className="form-group">
                         <label htmlFor="username">User Name:</label>

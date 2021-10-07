@@ -8,7 +8,7 @@ export async function login(username, password){
             password: password
         };
         var response = await axiosClient.post(url, data)
-        localStorage.setItem("token", response.data.token)
+        localStorage.setItem("authJWT", response.data.token)
         return response;
     }
     catch(err){
@@ -16,6 +16,13 @@ export async function login(username, password){
     }
 }
 
-export function logout() {
-    localStorage.removeItem("token");
-  }
+export async function logOut(){
+    try{
+        var url = "users/logout";
+        var response = await axiosClient.get(url)
+        return response;
+    }
+    catch(error){
+        throw error
+    }
+}

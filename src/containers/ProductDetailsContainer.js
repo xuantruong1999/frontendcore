@@ -28,7 +28,7 @@ export default function ProductDetailsContainer() {
     }
 
     useEffect( () =>{
-        dispatch(getProduct(id))
+        dispatch(getProduct(id));
     }, []);
 
     if (status === "fail") {
