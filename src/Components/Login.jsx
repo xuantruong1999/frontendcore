@@ -10,22 +10,35 @@ import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/CloseSharp';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useHistory } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
-export default function Login() {
+export default function Login(props) {
     var [username, changeUserName] = useState("");
     var [password, changePassword] = useState("");
     var [remember, changeRemember] = useState(false);
+    var [errMessage, setErroMessage] = useState("");
     const history = useHistory();
     const [open, setOpen] = useState(true);
 
-    var errMessage = useSelector(state => state.userLogin.message);
+   
     var status = useSelector(state => state.userLogin.status)
+    var message = useSelector(state => state.userLogin.message)
     var dispatch = useDispatch();
-
+    var {from} = props.location.state || {from: {pathname: "/"}};
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (username && password) {
+        if (username && password) 
+        { 
             dispatch(signin(username, password));
+            setErroMessage(message);
+        }
+        else if(username === ""){
+            setErroMessage("UserName is not null")
+            setOpen(true)
+        }
+        else if(password === ""){
+            setErroMessage("Password is not null")
+            setOpen(true)
         }
     }
 
@@ -36,12 +49,12 @@ export default function Login() {
                 .then(res => {
                     if (res.status === 200) {
                         dispatch(action.loginSuccess(res.data.user));
-                        history.push("/");
+                        history.push(from.pathname);
                     }
                     else if (res.status === 204) {
                         var err = {
-                            message: "Can not find the user ",
-                        }
+                            message: "UserName or Password is incorrect",
+                        };
                         dispatch(action.loginFails(err))
                     }
                 })

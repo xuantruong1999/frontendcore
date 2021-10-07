@@ -5,6 +5,7 @@ export const LOGIN_BEGIN ="LOGIN_BEGIN";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILS = "LOGIN_FAILS"; 
 export const LOGOUT = "LOGOUT";
+export const LOGOUT_FAILS = "LOGOUT_FAILS";
 
 //Product Action type
 export const GET_PRODUCTS_BEGIN = "GET_PRODUCTS_BEGIN";

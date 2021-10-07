@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createMemoryHistory } from 'history';
 import { useDispatch } from 'react-redux';
 import * as action from '../actions/Action';
+import { logOut } from '../api/userAPI';
 
 let history = createMemoryHistory();
 
@@ -104,11 +105,18 @@ export default connect(mapStatetoProps)(Header)
 
 const DisplayUserInfor = React.forwardRef((props, ref) => {
     var dispatch = useDispatch();
-    const logOut = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("persist:auth");
-        dispatch(action.logOut());
-        history.push('/')
+
+    const SignOut = () => {
+        logOut().then(response => {
+            if(response.status === 204){
+                dispatch(action.logOut());
+                localStorage.removeItem("authJWT");
+                history.push('/')
+            }
+            else{
+                dispatch(action.logOutFail());
+            }
+        });
     };
 
     if (props.isLogin) {
@@ -118,28 +126,28 @@ const DisplayUserInfor = React.forwardRef((props, ref) => {
                 props.isOpen && <div className={props.isOpen} id="dropdown-abc" ref={ref}>
                     <ul className="pointer-cursor">
                         <li className="dropdown-item text-center"><FontAwesomeIcon icon="id-badge" />Profile</li>
-                        <li className="dropdown-item text-center" onClick={logOut}><FontAwesomeIcon icon="sign-out-alt" />Logout</li>
+                        <li className="dropdown-item text-center" onClick={SignOut}><FontAwesomeIcon icon="sign-out-alt" />Logout</li>
                     </ul>
                 </div>
             }
         </div>
     }
-    else{
+    else {
         return <div>
-        {
-            <li className="nav-item">
-                <div className="nav-link item-menu position-relative" ref={ref}>
-                    <img src={DefaultIcon} className="img-fluid user-avatar" alt="" />
-                    {
-                        props.isOpen && <div className={props.isOpen} id="dropdown-abc" ref={ref}>
-                            <ul className="pointer-cursor">
-                                <li className="dropdown-item text-center"><Link to={'/users/login'}>Login</Link></li>
-                            </ul>
-                        </div>
-                    }
-                </div>
-            </li>
-        }
-    </div>
+            {
+                <li className="nav-item">
+                    <div className="nav-link item-menu position-relative" ref={ref}>
+                        <img src={DefaultIcon} className="img-fluid user-avatar" alt="" />
+                        {
+                            props.isOpen && <div className={props.isOpen} id="dropdown-abc" ref={ref}>
+                                <ul className="pointer-cursor">
+                                    <li className="dropdown-item text-center"><Link to={'/users/login'}>Login</Link></li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </li>
+            }
+        </div>
     }
 });

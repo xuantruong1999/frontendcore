@@ -11,6 +11,12 @@ var initial = {
 
 const userReducer = (state = initial, action) => {
     switch (action.type) {
+        case types.LOGOUT_FAILS:
+            return {                
+                ...initial,
+                status: "fails",
+                message: "Logout is fails",
+            }
         case types.LOGOUT:
             return {                
                 ...initial,

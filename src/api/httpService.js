@@ -8,13 +8,15 @@ import querystring from 'query-string';
 const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_URL_API_DEV,
     headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
     },
     paramsSerializer: params => querystring.stringify(params),
 });
 
 axiosClient.interceptors.request.use(function (config) {
     // Do something before request is sent
+    var token = localStorage.getItem("authJWT");
+    config.headers.common['Authorization'] = "Bearer" + " " + token;
     return config;
   }, function (error) {
     // Do something with request error

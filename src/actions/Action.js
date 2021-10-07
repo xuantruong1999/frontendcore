@@ -6,7 +6,6 @@ export const searchAction = (kw) => ({
 });
 
 //User Action
-
 export const loginBegin = () =>({
     type: types.LOGIN_BEGIN,
     payload: {
@@ -36,6 +35,10 @@ export const loginFails = (err) =>({
 
 export const logOut = () => ({
     type: types.LOGOUT,
+});
+
+export const logOutFail = () => ({
+    type: types.LOGOUT_FAILS,
 });
 //Product Action
 export const getProductsBegin = () => ({
