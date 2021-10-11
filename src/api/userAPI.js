@@ -7,8 +7,7 @@ export async function login(username, password){
             username: username,
             password: password
         };
-        var response = await axiosClient.post(url, data)
-        localStorage.setItem("authJWT", response.data.token)
+        var response = await axiosClient.post(url, data);
         return response;
     }
     catch(err){

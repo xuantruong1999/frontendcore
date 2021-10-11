@@ -49,6 +49,8 @@ export default function Login(props) {
                 .then(res => {
                     if (res.status === 200) {
                         dispatch(action.loginSuccess(res.data.user));
+                        localStorage.setItem("authJWT", res.data.token)
+                        localStorage.setItem("refreshToken", res.data.refreshToken);
                         history.push(from.pathname);
                     }
                     else if (res.status === 204) {

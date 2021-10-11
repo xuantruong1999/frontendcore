@@ -111,6 +111,7 @@ const DisplayUserInfor = React.forwardRef((props, ref) => {
             if(response.status === 204){
                 dispatch(action.logOut());
                 localStorage.removeItem("authJWT");
+                localStorage.removeItem("refreshToken");
                 history.push('/')
             }
             else{

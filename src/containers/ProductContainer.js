@@ -17,8 +17,9 @@ class ProductContainer extends React.Component {
             dispatch(action.getProductsBegin());
             getAll()
             .then((res) => {
-                if(res.status === 200)
+                if(res.status === 200){
                     return res;
+                }
                 else{
                     var error = "Unable get products";
                     throw(error);
