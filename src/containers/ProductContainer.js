@@ -5,6 +5,7 @@ import { getAll } from '../api/productAPI';
 import * as action from '../actions/Action';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
+import FilterBar from '../components/modules/filterBar';
 
 class ProductContainer extends React.Component {
 
@@ -37,13 +38,15 @@ class ProductContainer extends React.Component {
     showProducts(){
         let {listProducts, keyWord, status, message} = this.props;
         if(status === "success"){
-            if( keyWord !== ""){
-                listProducts = listProducts.filter(product => product.Name.toUpperCase().includes(keyWord.toUpperCase())
-                || product.Description.toUpperCase().includes(keyWord.toUpperCase()))
+            if( keyWord !== "" && listProducts.length > 0){
+                listProducts = listProducts.filter(function(product){
+                    return product.Name?.toUpperCase().includes(keyWord.toUpperCase()) || product.Description?.includes(keyWord.toUpperCase());
+                });
             }
             return(
                 <div className="container">
-                    <div className="row">
+                    <FilterBar />
+                    <div className="row" style={{marginLeft: "0", marginRight: "0"}}>
                         {
                             listProducts.map(function (product) {
                                 return <Item product={product} key={product.Id}></Item>
@@ -61,7 +64,6 @@ class ProductContainer extends React.Component {
                 <CircularProgress />
             )
         }
-       
     }
     
     render() {
