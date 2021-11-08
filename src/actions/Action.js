@@ -1,8 +1,19 @@
 import * as types from '../constants/ActionTypes';
 
+//Search Action
 export const searchAction = (kw) => ({
     type: types.SEARCH_ACTION,
     payload: kw
+});
+
+export const sortByPrice = (typeSorter) => ({
+    type: types.SORT_PRICE,
+    payload: typeSorter,
+});
+
+export const sortByDate = () =>({
+    type: types.SORT_BY_DATE,
+    payload: "latest",
 });
 
 //User Action

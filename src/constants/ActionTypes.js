@@ -1,5 +1,6 @@
 export const SEARCH_ACTION = "SEARCH_ACTION";
-
+export const SORT_PRICE = "SORT_PRICE";
+export const SORT_BY_DATE = "SORT_BY_DATE";
 //User Action type
 export const LOGIN_BEGIN ="LOGIN_BEGIN";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
