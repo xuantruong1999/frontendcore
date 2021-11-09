@@ -12,9 +12,6 @@ import '../icon/index';
 import DefaultIcon from '../images/profile-icon.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createMemoryHistory } from 'history';
-import { useDispatch } from 'react-redux';
-import * as action from '../actions/Action';
-import { logOut } from '../api/userAPI';
 
 let history = createMemoryHistory();
 
@@ -104,20 +101,12 @@ var mapStatetoProps = (state) => ({
 export default connect(mapStatetoProps)(Header)
 
 const DisplayUserInfor = React.forwardRef((props, ref) => {
-    var dispatch = useDispatch();
 
     const SignOut = () => {
-        logOut().then(response => {
-            if(response.status === 204){
-                dispatch(action.logOut());
-                localStorage.removeItem("authJWT");
-                localStorage.removeItem("refreshToken");
-                history.push('/')
-            }
-            else{
-                dispatch(action.logOutFail());
-            }
-        });
+        debugger
+        localStorage.removeItem("authJWT");
+        localStorage.removeItem("refreshToken");
+        history.push('/')
     };
 
     if (props.isLogin) {
