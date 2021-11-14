@@ -37,7 +37,6 @@ axiosClient.interceptors.response.use(function (response) {
 }, async function (error) {
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   // Do something with response error
-  debugger
   var originalConfig = error.config;
   if (originalConfig.url !== "/users/login" && error.response) {
     if (error.response.status === 401 && !originalConfig._retry) {

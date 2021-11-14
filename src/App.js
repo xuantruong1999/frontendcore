@@ -24,7 +24,6 @@ class App extends React.Component {
               <PrivateRoute path='/product/details/:id' exact component={ProductDetailsContainer} />
               <Route path="*" component={() => "404 NOT FOUND"} />
             </Switch>
-            
           </Container>
         </main>
         <Footer />
