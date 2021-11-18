@@ -5,10 +5,12 @@ import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 
+
+
 const rootPersistConfig = {
-    key: 'root',
+    key: 'cardStorage',
     storage,
-    blacklist: ['userLogin', 'searchString', 'products', 'product']
+    whitelist: ['card']
 };
  
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);

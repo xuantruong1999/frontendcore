@@ -3,7 +3,8 @@ import searchReducer  from './searchReducer';
 import userReducer from './userReducer';
 import productsReducer from './productsReducer';
 import productDetailReducer from "./productDetailReducer";
-import storage from 'redux-persist/lib/storage'
+import cardReducer from './cardReducer';
+import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist'
 
 const authPersistConfig = {
@@ -17,5 +18,6 @@ export default combineReducers({
     userLogin: persistReducer(authPersistConfig, userReducer),
     products: productsReducer,
     product: productDetailReducer,
+    card: cardReducer,
 })
 

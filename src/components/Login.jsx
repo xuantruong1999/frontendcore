@@ -10,7 +10,6 @@ import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/CloseSharp';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useHistory } from 'react-router-dom';
-import {Redirect} from 'react-router-dom';
 
 export default function Login(props) {
     var [username, changeUserName] = useState("");
@@ -18,7 +17,7 @@ export default function Login(props) {
     var [remember, changeRemember] = useState(false);
     var [errMessage, setErroMessage] = useState("");
     const history = useHistory();
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
    
     var status = useSelector(state => state.userLogin.status)
@@ -31,6 +30,7 @@ export default function Login(props) {
         { 
             dispatch(signin(username, password));
             setErroMessage(message);
+            setOpen(true)
         }
         else if(username === ""){
             setErroMessage("UserName is not null")
