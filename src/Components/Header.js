@@ -11,19 +11,19 @@ import { connect } from 'react-redux';
 import '../icon/index';
 import DefaultIcon from '../images/profile-icon.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { createMemoryHistory } from 'history';
-import { useDispatch } from 'react-redux';
-import * as action from '../actions/Action';
-import { logOut } from '../api/userAPI';
-
-let history = createMemoryHistory();
+import {useHistory} from 'react-router';
+import {useDispatch} from 'react-redux';
+import * as actions from '../actions/Action';
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: "d-none"
+            isOpen: "d-none",
+            isLogin: this.props.isLogin,
+            avatar: this.props.avatar,
         }
+
         this.handleOutSideClick = this.handleOutSideClick.bind(this);
         this.dropdown = createRef();
     }
@@ -48,7 +48,7 @@ class Header extends React.Component {
     }
 
     render() {
-        var { isLogin, avatar } = this.props;
+        var { avatar, isLogin } = this.props;
         return (
             <>
                 <nav className="navbar navbar-expand-lg static-top shadow-sm  bg-white">
@@ -84,7 +84,7 @@ class Header extends React.Component {
                                     <Link className="nav-link item-menu" to={'/notifications'}><img src={NotifyIcon} alt="Notify message" className="icon" /></Link>
                                 </li>
                                 <li className="nav-item mr-4">
-                                    <Link className="nav-link item-menu" to={'/cart'}><img src={ShoppingCart} alt="shopping card" className="icon" /></Link>
+                                    <Link className="nav-link item-menu" to={'/cart'}>2<img src={ShoppingCart} alt="shopping card" className="icon" /></Link>
                                 </li>
                                 <DisplayUserInfor ref={this.dropdown} avatar={avatar} isLogin={isLogin} isOpen={this.state.isOpen} />
                             </ul>
@@ -104,20 +104,14 @@ var mapStatetoProps = (state) => ({
 export default connect(mapStatetoProps)(Header)
 
 const DisplayUserInfor = React.forwardRef((props, ref) => {
-    var dispatch = useDispatch();
-
+    let history = useHistory();
+    let dispatch = useDispatch();
     const SignOut = () => {
-        logOut().then(response => {
-            if(response.status === 204){
-                dispatch(action.logOut());
-                localStorage.removeItem("authJWT");
-                localStorage.removeItem("refreshToken");
-                history.push('/')
-            }
-            else{
-                dispatch(action.logOutFail());
-            }
-        });
+        localStorage.removeItem("authJWT");
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("persist:auth");
+        dispatch(actions.logOut());
+        history.push('/');
     };
 
     if (props.isLogin) {

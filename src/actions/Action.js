@@ -1,8 +1,24 @@
 import * as types from '../constants/ActionTypes';
 
+//Card
+export const addToCart = ({product, quantity}) => ({
+    type: types.ADD_TO_CART,
+    payload: { item:product, quantity: Number(quantity)} 
+});
+//Search Action
 export const searchAction = (kw) => ({
     type: types.SEARCH_ACTION,
     payload: kw
+});
+
+export const sortByPrice = (typeSorter) => ({
+    type: types.SORT_PRICE,
+    payload: typeSorter,
+});
+
+export const sortByDate = () =>({
+    type: types.SORT_BY_DATE,
+    payload: "latest",
 });
 
 //User Action

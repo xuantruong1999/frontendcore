@@ -13,22 +13,22 @@ const userReducer = (state = initial, action) => {
     switch (action.type) {
         case types.LOGOUT_FAILS:
             return {                
-                ...initial,
+                ...state,
                 status: "fails",
                 message: "Logout is fails",
             }
         case types.LOGOUT:
             return {                
-                ...initial,
+                ...state,
             }
         case types.LOGIN_BEGIN:
             return {
-                ...initial,
+                ...state,
                 status: action.payload.status,
             }
         case types.LOGIN_SUCCESS:
             return {
-                ...initial,
+                ...state,
                 username: action.payload.username,
                 avatar: action.payload.avatar,
                 email: action.payload.email,
@@ -37,7 +37,7 @@ const userReducer = (state = initial, action) => {
             }
         case types.LOGIN_FAILS:
             return {
-                ...initial,
+                ...state,
                 message: action.payload.message,
                 status: action.payload.status
             }

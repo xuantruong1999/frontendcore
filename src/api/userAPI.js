@@ -14,14 +14,3 @@ export async function login(username, password){
         throw err;
     }
 }
-
-export async function logOut(){
-    try{
-        var url = "users/logout";
-        var response = await axiosClient.get(url)
-        return response;
-    }
-    catch(error){
-        throw error
-    }
-}
