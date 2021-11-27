@@ -1,10 +1,10 @@
 import * as types from '../constants/ActionTypes';
 
 //Card
-export const addToCard = ({product}) => ({
-    type: types.ADD_TO_CARD,
-    payload: product,
-})
+export const addToCart = ({product, quantity}) => ({
+    type: types.ADD_TO_CART,
+    payload: { item:product, quantity: Number(quantity)} 
+});
 //Search Action
 export const searchAction = (kw) => ({
     type: types.SEARCH_ACTION,

@@ -8,9 +8,9 @@ import storage from 'redux-persist/lib/storage';
 
 
 const rootPersistConfig = {
-    key: 'cardStorage',
+    key: 'cartStorage',
     storage,
-    whitelist: ['card']
+    whitelist: ['cart']
 };
  
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);

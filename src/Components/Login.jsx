@@ -18,8 +18,7 @@ export default function Login(props) {
     var [errMessage, setErroMessage] = useState("");
     const history = useHistory();
     const [open, setOpen] = useState(false);
-
-   
+    var isLogin = useSelector(state => state.userLogin.isLogin)
     var status = useSelector(state => state.userLogin.status)
     var message = useSelector(state => state.userLogin.message)
     var dispatch = useDispatch();
@@ -66,11 +65,15 @@ export default function Login(props) {
         }
     }
 
+    if(isLogin){
+        history.push("/")
+    }
     if (status && status === "begin") {
         return (
             <CircularProgress />
         );
     }
+
     return (
         <>
             <section className="" id="wrapper-login-form" >

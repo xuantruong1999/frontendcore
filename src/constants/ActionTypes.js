@@ -1,5 +1,7 @@
-//Card Action type
-export const ADD_TO_CARD = "ADD_TO_CARD";
+
+//Cart Action type
+export const ADD_TO_CART = "ADD_TO_CART";
+//Sort and Search type
 export const SEARCH_ACTION = "SEARCH_ACTION";
 export const SORT_PRICE = "SORT_PRICE";
 export const SORT_BY_DATE = "SORT_BY_DATE";

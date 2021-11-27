@@ -84,7 +84,7 @@ class Header extends React.Component {
                                     <Link className="nav-link item-menu" to={'/notifications'}><img src={NotifyIcon} alt="Notify message" className="icon" /></Link>
                                 </li>
                                 <li className="nav-item mr-4">
-                                    <Link className="nav-link item-menu" to={'/cart'}><img src={ShoppingCart} alt="shopping card" className="icon" /></Link>
+                                    <Link className="nav-link item-menu" to={'/cart'}>2<img src={ShoppingCart} alt="shopping card" className="icon" /></Link>
                                 </li>
                                 <DisplayUserInfor ref={this.dropdown} avatar={avatar} isLogin={isLogin} isOpen={this.state.isOpen} />
                             </ul>
