@@ -1,6 +1,7 @@
 
 //Cart Action type
 export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_TO_CART = "REMOVE_TO_CART";
 //Sort and Search type
 export const SEARCH_ACTION = "SEARCH_ACTION";
 export const SORT_PRICE = "SORT_PRICE";

@@ -64,7 +64,7 @@ export default function Login(props) {
                 })
         }
     }
-
+    
     if(isLogin){
         history.push("/")
     }

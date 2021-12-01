@@ -21,6 +21,16 @@ function cartReducer(cart = initialCartState, action) {
                 ...cart,
                 totalItem: cart.products.length
             }
+        case types.REMOVE_TO_CART:
+            let id = action.payload;
+            let index = cart.products.findIndex( p => p.item.Id === id);
+            if(index > -1){
+                cart.products.splice(index,1);
+            }
+            return{
+                ...cart,
+                totalItem: cart.products.length
+            }
         default:
             return cart;
     }

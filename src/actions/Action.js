@@ -5,6 +5,11 @@ export const addToCart = ({product, quantity}) => ({
     type: types.ADD_TO_CART,
     payload: { item:product, quantity: Number(quantity)} 
 });
+
+export const removeItem = (itemID) =>({
+    type: types.REMOVE_TO_CART,
+    payload: itemID
+})
 //Search Action
 export const searchAction = (kw) => ({
     type: types.SEARCH_ACTION,

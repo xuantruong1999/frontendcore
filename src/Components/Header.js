@@ -48,7 +48,7 @@ class Header extends React.Component {
     }
 
     render() {
-        var { avatar, isLogin } = this.props;
+        var { avatar, isLogin, totalItem } = this.props;
         return (
             <>
                 <nav className="navbar navbar-expand-lg static-top shadow-sm  bg-white">
@@ -84,7 +84,12 @@ class Header extends React.Component {
                                     <Link className="nav-link item-menu" to={'/notifications'}><img src={NotifyIcon} alt="Notify message" className="icon" /></Link>
                                 </li>
                                 <li className="nav-item mr-4">
-                                    <Link className="nav-link item-menu" to={'/cart'}>2<img src={ShoppingCart} alt="shopping card" className="icon" /></Link>
+                                    <Link className="nav-link item-menu d-flex relative" id="icon-shoppingcart"to={'/cart'}>
+                                        <img src={ShoppingCart} alt="shopping card" className="icon" />
+                                        {
+                                             !totalItem ? "" : <span className="icon-cart-badge">{totalItem}</span>
+                                        }
+                                    </Link>
                                 </li>
                                 <DisplayUserInfor ref={this.dropdown} avatar={avatar} isLogin={isLogin} isOpen={this.state.isOpen} />
                             </ul>
@@ -98,7 +103,8 @@ class Header extends React.Component {
 
 var mapStatetoProps = (state) => ({
     isLogin: state.userLogin.isLogin,
-    avatar: state.userLogin.avatar
+    avatar: state.userLogin.avatar,
+    totalItem: state.cart.totalItem,
 });
 
 export default connect(mapStatetoProps)(Header)
@@ -113,7 +119,7 @@ const DisplayUserInfor = React.forwardRef((props, ref) => {
         dispatch(actions.logOut());
         history.push('/');
     };
-
+    debugger
     if (props.isLogin) {
         return <div className="nav-link item-menu position-relative" ref={ref}>
             <img src={props.avatar} className="img-fluid user-avatar" alt="" />
