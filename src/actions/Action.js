@@ -1,14 +1,20 @@
+import { type } from 'jquery';
 import * as types from '../constants/ActionTypes';
 
 //Card
-export const addToCart = ({product, quantity}) => ({
+export const addToCart = ({ product, quantity }) => ({
     type: types.ADD_TO_CART,
-    payload: { item:product, quantity: Number(quantity)} 
+    payload: { item: product, quantity: Number(quantity) }
 });
 
-export const removeItem = (itemID) =>({
+export const removeItem = (itemID) => ({
     type: types.REMOVE_TO_CART,
     payload: itemID
+})
+
+export const updateToCart = (id, quantity) => ({
+    type: types.UPDATE_TO_CART,
+    payload: {id, quantity}
 })
 //Search Action
 export const searchAction = (kw) => ({
@@ -21,13 +27,13 @@ export const sortByPrice = (typeSorter) => ({
     payload: typeSorter,
 });
 
-export const sortByDate = () =>({
+export const sortByDate = () => ({
     type: types.SORT_BY_DATE,
     payload: "latest",
 });
 
 //User Action
-export const loginBegin = () =>({
+export const loginBegin = () => ({
     type: types.LOGIN_BEGIN,
     payload: {
         status: "begin",
@@ -46,7 +52,7 @@ export const loginSuccess = (user) => ({
     }
 });
 
-export const loginFails = (err) =>({
+export const loginFails = (err) => ({
     type: types.LOGIN_FAILS,
     payload: {
         status: "fails",

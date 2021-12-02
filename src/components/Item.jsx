@@ -4,11 +4,12 @@ import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 
 export default function Item({ product }) {
     return (
         <div className="col col-sm-4 col-md-2 position-relative mr-3 mb-3 card" id="item">
-            <a id={product.id} href={"product/details/" + product.Id}>
+            <Link id={product.id} to={"product/details/" + product.Id}>
                 <p className="coupon position-absolute">
                     <span className="d-block text-center" style={{ color: "red" }}>35%</span>
                     <span>Giảm</span>
@@ -27,7 +28,7 @@ export default function Item({ product }) {
                 <div className="mb-0 p-1">
                     <div className="address"> <FontAwesomeIcon icon={faMapMarkerAlt} />&nbsp;Hà Nội</div>
                 </div>
-            </a>
+            </Link>
         </div>
     );
 }
