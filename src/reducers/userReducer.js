@@ -20,6 +20,7 @@ const userReducer = (state = initial, action) => {
         case types.LOGOUT:
             return {                
                 ...state,
+                isLogin: false,
             }
         case types.LOGIN_BEGIN:
             return {
@@ -38,6 +39,7 @@ const userReducer = (state = initial, action) => {
         case types.LOGIN_FAILS:
             return {
                 ...state,
+                isLogin: false,
                 message: action.payload.message,
                 status: action.payload.status
             }

@@ -36,9 +36,11 @@ class ProductContainer extends React.Component {
                     dispatch(action.getProductsSuccess(res))
                 })
                 .catch(err => {
-                    if (err.status === 400)
+                    if (err.response.status === 400){
                         dispatch(action.getProductsFails(err));
-                    this.state.history.push('/users/login');
+                        dispatch(action.loginFails(err))
+                        this.state.history.push('/users/login');
+                    }
                 })
         }
     }

@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import '../icon/index';
 import DefaultIcon from '../images/profile-icon.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {useHistory} from 'react-router';
 import {useDispatch} from 'react-redux';
 import * as actions from '../actions/Action';
 
@@ -48,7 +47,7 @@ class Header extends React.Component {
     }
 
     render() {
-        var { avatar, isLogin } = this.props;
+        var { avatar, isLogin, totalItem } = this.props;
         return (
             <>
                 <nav className="navbar navbar-expand-lg static-top shadow-sm  bg-white">
@@ -84,7 +83,12 @@ class Header extends React.Component {
                                     <Link className="nav-link item-menu" to={'/notifications'}><img src={NotifyIcon} alt="Notify message" className="icon" /></Link>
                                 </li>
                                 <li className="nav-item mr-4">
-                                    <Link className="nav-link item-menu" to={'/cart'}>2<img src={ShoppingCart} alt="shopping card" className="icon" /></Link>
+                                    <Link className="nav-link item-menu d-flex relative" id="icon-shoppingcart"to={'/cart'}>
+                                        <img src={ShoppingCart} alt="shopping card" className="icon" />
+                                        {
+                                             (totalItem && isLogin) ? <span className="icon-cart-badge">{totalItem}</span> : "" 
+                                        }
+                                    </Link>
                                 </li>
                                 <DisplayUserInfor ref={this.dropdown} avatar={avatar} isLogin={isLogin} isOpen={this.state.isOpen} />
                             </ul>
@@ -98,22 +102,23 @@ class Header extends React.Component {
 
 var mapStatetoProps = (state) => ({
     isLogin: state.userLogin.isLogin,
-    avatar: state.userLogin.avatar
+    avatar: state.userLogin.avatar,
+    totalItem: state.cart.totalItem,
 });
 
 export default connect(mapStatetoProps)(Header)
 
 const DisplayUserInfor = React.forwardRef((props, ref) => {
-    let history = useHistory();
     let dispatch = useDispatch();
     const SignOut = () => {
         localStorage.removeItem("authJWT");
         localStorage.removeItem("refreshToken");
         localStorage.removeItem("persist:auth");
+        localStorage.removeItem("persist:cartStorage");
         dispatch(actions.logOut());
-        history.push('/');
-    };
+        window.location.href = '/';
 
+    };
     if (props.isLogin) {
         return <div className="nav-link item-menu position-relative" ref={ref}>
             <img src={props.avatar} className="img-fluid user-avatar" alt="" />
