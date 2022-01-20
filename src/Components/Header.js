@@ -1,100 +1,67 @@
-import React, { createRef } from "react";
-import { Link } from 'react-router-dom';
 import Search from './Search';
 import '../Sass/components/header.scss';
 import Logo from '../images/logo-frontend.png';
-import IconSetting from '../images/settings.svg';
-import NotifyIcon from '../images/bell.svg';
 import Menu from '../images/menu.svg';
-import ShoppingCart from '../images/shopping-cart.svg';
 import { connect } from 'react-redux';
 import '../icon/index';
-import DefaultIcon from '../images/profile-icon.jpg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {useDispatch} from 'react-redux';
-import * as actions from '../actions/Action';
+import { NavBar, NavBarMobile } from './NavBar';
+import React from 'react';
+import BackDrop from './modules/BackDrop';
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: "d-none",
             isLogin: this.props.isLogin,
             avatar: this.props.avatar,
+            isOpenNavBarMobile: false,
+            windowDemension: window.innerWidth
         }
+        this.handleClickHamburger = this.handleClickHamburger.bind(this);
+        this.handleResize = this.handleResize.bind(this);
+    }
 
-        this.handleOutSideClick = this.handleOutSideClick.bind(this);
-        this.dropdown = createRef();
+    handleResize() {
+        this.setState({ windowDemension: window.innerWidth, isOpenNavBarMobile: false })
     }
 
     componentDidMount() {
-        document.addEventListener("mousedown", this.handleOutSideClick)
+        window.addEventListener("resize", this.handleResize);
     }
 
     componentWillUnmount() {
-        document.removeEventListener("mousedown", this.handleOutSideClick);
+        window.removeEventListener("resize", this.handleResize);
     }
 
-    handleOutSideClick(event) {
-        var isClickOn = this.dropdown.current && this.dropdown.current.contains(event.target);
-
-        if (isClickOn) {
-            this.setState({ isOpen: "d-block" })
-        }
-        else {
-            this.setState({ isOpen: "d-none" })
-        }
+    handleClickHamburger(event) {
+        this.setState({ isOpenNavBarMobile: !this.state.isOpenNavBarMobile })
     }
 
     render() {
-        var { avatar, isLogin, totalItem } = this.props;
+        var isMobile = this.state.windowDemension <= 992;
         return (
             <>
                 <nav className="navbar navbar-expand-lg static-top shadow-sm  bg-white">
                     <div className="container-fluid">
-                        <div className="navbar-brand">
+                        <div className="navbar-brand mr-2">
                             <a href="/">
                                 <img src={Logo} alt="logo" id="logo" />
                             </a>
                         </div>
-                        <div className="nav-item ml-sm-5" id="search">
+
+                        <div className="nav-item" id="search">
                             <Search />
                         </div>
 
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <button className="navbar-toggler" onClick={this.handleClickHamburger} type="button" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"><img src={Menu} className="icon" alt="icon collapse menu" style={{ height: "35px", width: "35px" }} /></span>
                         </button>
 
-                        <div className="collapse navbar-collapse row" id="navbarResponsive">
-                            <ul className="navbar-nav d-flex col-lg-6 col-md-6 col-sm-6">
-                                <li className="nav-item ml-sm-2 ml-lg-4 ml-md-4 mr-2">
-                                    <Link className="nav-link item-menu" to={'/'}>Home</Link>
-                                </li>
-                                <li className="nav-item mx-2">
-                                    <Link className="nav-link item-menu" to={'/products'}>Products</Link>
-                                </li>
-                            </ul>
+                        {this.state.isOpenNavBarMobile && isMobile === true? <NavBarMobile handleClickHamburger={this.handleClickHamburger} /> : <NavBar />}
 
-                            <ul className="navbar-nav d-flex justify-content-end align-items-center mx-auto col-lg-6 col-md-6 col-sm-6">
-                                <li className="nav-item mr-4">
-                                    <Link className="nav-link item-menu" to={'/settings'}><img src={IconSetting} alt="settings" className="icon" /></Link>
-                                </li>
-                                <li className="nav-item mr-4">
-                                    <Link className="nav-link item-menu" to={'/notifications'}><img src={NotifyIcon} alt="Notify message" className="icon" /></Link>
-                                </li>
-                                <li className="nav-item mr-4">
-                                    <Link className="nav-link item-menu d-flex relative" id="icon-shoppingcart"to={'/cart'}>
-                                        <img src={ShoppingCart} alt="shopping card" className="icon" />
-                                        {
-                                             (totalItem && isLogin) ? <span className="icon-cart-badge">{totalItem}</span> : "" 
-                                        }
-                                    </Link>
-                                </li>
-                                <DisplayUserInfor ref={this.dropdown} avatar={avatar} isLogin={isLogin} isOpen={this.state.isOpen} />
-                            </ul>
-                        </div>
                     </div>
                 </nav>
+                {this.state.isOpenNavBarMobile && isMobile === true? <BackDrop handleClickHamburger={this.handleClickHamburger} /> : ""}
             </>
         );
     }
@@ -108,46 +75,4 @@ var mapStatetoProps = (state) => ({
 
 export default connect(mapStatetoProps)(Header)
 
-const DisplayUserInfor = React.forwardRef((props, ref) => {
-    let dispatch = useDispatch();
-    const SignOut = () => {
-        localStorage.removeItem("authJWT");
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("persist:auth");
-        localStorage.removeItem("persist:cartStorage");
-        dispatch(actions.logOut());
-        window.location.href = '/';
 
-    };
-    if (props.isLogin) {
-        return <div className="nav-link item-menu position-relative" ref={ref}>
-            <img src={props.avatar} className="img-fluid user-avatar" alt="" />
-            {
-                props.isOpen && <div className={props.isOpen} id="dropdown-abc" ref={ref}>
-                    <ul className="pointer-cursor">
-                        <li className="dropdown-item text-center"><FontAwesomeIcon icon="id-badge" />Profile</li>
-                        <li className="dropdown-item text-center" onClick={SignOut}><FontAwesomeIcon icon="sign-out-alt" />Logout</li>
-                    </ul>
-                </div>
-            }
-        </div>
-    }
-    else {
-        return <div>
-            {
-                <li className="nav-item">
-                    <div className="nav-link item-menu position-relative" ref={ref}>
-                        <img src={DefaultIcon} className="img-fluid user-avatar" alt="" />
-                        {
-                            props.isOpen && <div className={props.isOpen} id="dropdown-abc" ref={ref}>
-                                <ul className="pointer-cursor">
-                                    <li className="dropdown-item text-center"><Link to={'/users/login'}>Login</Link></li>
-                                </ul>
-                            </div>
-                        }
-                    </div>
-                </li>
-            }
-        </div>
-    }
-});

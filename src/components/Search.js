@@ -26,7 +26,7 @@ class Search extends Component {
 
     render(){
         return(
-            <form className="form-inline" onSubmit={ this.handleSubmit} style={{width: "100%"}}>
+            <form className="form-inline" onSubmit={ this.handleSubmit} style={{width: "100%", minWidth: "250px"}}>
                 <input className="form-control" style={{borderRadius: "0", width: "80%"}} type="search" placeholder="Search" aria-label="Search" onChange={this.handleChange} />
                 <button className="btn btn-success" style={{borderRadius: "0"}} type="submit">
                     <FontAwesomeIcon icon="search" />

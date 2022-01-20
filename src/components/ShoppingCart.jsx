@@ -2,13 +2,20 @@ import '../Sass/components/ShoppingCartItem.scss';
 import {useDispatch} from 'react-redux';
 import * as actions from '../actions/Action';
 import { useState } from 'react';
+import  { Link } from 'react-router-dom';
 
 export default function ShoppingCart({ item, quantity }) {
     const dispatch = useDispatch();
     const [amount, setAmount] = useState(quantity);
+    
     const handleChangeQuantity = (event) => {
        let value = event.target.value;
        value = parseInt(value);
+       
+       if(isNaN(value)){
+           return false;
+       }
+
         if(value < 0){
             alert("Quantity must be  more than zero");
             setAmount(quantity);
@@ -28,6 +35,7 @@ export default function ShoppingCart({ item, quantity }) {
         }
         event.preventDefault();
     }
+
     const handleRemoveItem = (event) => {
         let isRemove = window.confirm("Are you sure?");
         if(isRemove){
@@ -36,6 +44,9 @@ export default function ShoppingCart({ item, quantity }) {
         event.preventDefault();
     }
 
+    const caculatePrice = () =>{
+        return parseInt(amount) * parseFloat(item.Price)
+    }
     return (
         <div className="border p-2 rounded mt-2">
             <button type="button" className="close" aria-label="Close" onClick={handleRemoveItem}>
@@ -55,11 +66,12 @@ export default function ShoppingCart({ item, quantity }) {
                 </div>
                 <div className="col-2 unit-price text-center">
                     <span className="text-secondary">Price</span>
-                    <input  className="form-control" value={item.Price} />
+                    <input  className="form-control" value={item.Price} readOnly/>
                 </div>
                 <div className="col-2 total text-center">
                     <span className="text-secondary">Total</span>
-                    <input className="form-control" value={parseInt(amount) * parseFloat(item.Price)} />
+                    <input className="form-control" value={caculatePrice()} readOnly/>
+                    <Link className="btn btn-primary btn-detail" to={`/product/details/${item.Id}`}>Details</Link>
                 </div>
             </div>
         </div>
