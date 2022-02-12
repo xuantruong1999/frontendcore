@@ -49,7 +49,7 @@ class Header extends React.Component {
                             </a>
                         </div>
 
-                        <div className="nav-item" id="search">
+                        <div className="nav-item">
                             <Search />
                         </div>
 

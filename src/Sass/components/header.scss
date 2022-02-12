@@ -1,8 +1,5 @@
 nav{
     position: relative;
-    #search{
-        margin-left: 25px;
-    }   
 }
 
 #navbar-mobile{
@@ -130,28 +127,14 @@ div#dropdown-abc{
 
 //Responsive
 @media (max-width: 992px) {
-    #search{
-        width: 500px;
-    }
-
+   
     #navbar-pc{
         display: none;
     }
- 
-}
 
-
-
-@media (max-width: 768px) {
-    #search{
-        width: 300px;
-    }
 }
 
 @media (max-width: 576px) {
-    #search{
-        width: 200px;
-    }
     img#logo{
         height: 70px;
         width: 70px;
