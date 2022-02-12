@@ -104,7 +104,11 @@ export default function Login(props) {
                     <h1 className="text-center">Đăng Nhập</h1>
                     <div className="form-group">
                         <label htmlFor="username">User Name:</label>
-                        <input type="text" className="form-control " value={username} id="username" name="username" onChange={event => changeUserName(username = event.target.value)} />
+                        <input type="text" className="form-control "
+                            value={username}
+                            id="username"
+                            name="username" 
+                            onChange={event => changeUserName(username = event.target.value)} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="pass">Password:</label>

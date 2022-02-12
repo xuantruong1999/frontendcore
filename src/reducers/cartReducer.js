@@ -31,6 +31,7 @@ function cartReducer(cart = initialCartState, action) {
                 totalItem: cart.products.length
             }
         case types.REMOVE_TO_CART:
+            debugger
             let id = action.payload;
             let index = cart.products.findIndex( p => p.item.Id === id);
             if(index > -1){

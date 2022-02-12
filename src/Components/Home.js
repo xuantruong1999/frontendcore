@@ -27,7 +27,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                     <Category />
-                    <Banner image={banner} alt={"Đại giảm giá duy nhất trong năm"}/>
+                    <Banner image={banner} alt="Đại giảm giá duy nhất trong năm"/>
                     <ListProduct/>             
                 </div>
             </>
@@ -92,7 +92,9 @@ function Category(){
 function ListProduct(){
     return(
         <section>
-            <div className="brand"><img src={brand} alt=""/></div>
+            <div className="brand">
+                <img src={brand} alt="" className="img-fluid"/>
+                </div>
             <div className="list-product">
                 <h3 className="">Sản Phẩm Hàng Hiệu</h3>
             </div>

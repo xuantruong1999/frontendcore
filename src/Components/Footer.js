@@ -1,10 +1,10 @@
 import React from 'react';
 import '../Sass/components/footer.scss';
-class Clock extends React.Component{
+class Footer extends React.Component{
     render(){
         return(
             <footer className="page-footer container-fluid" id="footer">
-                <div className="d-flex">
+                <div className="d-flex flex-wrap justify-content-center">
                     <ul className="p-2 flex-fill ">
                         <li>Về momyandbaby</li>
                         <li>Giới thiệu về momyandbaby</li>
@@ -42,4 +42,4 @@ class Clock extends React.Component{
     };
 }
 
-export default Clock;
+export default Footer;
