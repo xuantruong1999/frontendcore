@@ -18,10 +18,11 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(function (config) {
   // Do something before request is sent
   var token = tokenService.getAccessToken();
-  
   if (token) {
     config.headers['Authorization'] = "Bearer " + token;
   }
+  config.timeout = 1000;
+  config.timeoutErrorMessage = "Request timeout";
   return config;
 
 }, function (error) {
@@ -38,7 +39,7 @@ axiosClient.interceptors.response.use(function (response) {
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   // Do something with response error
   var originalConfig = error.config;
-  if (originalConfig.url !== "/users/login" && error.response) {
+  if (originalConfig.url !== "users/login" && error.response) {
     if (error.response.status === 401 && !originalConfig._retry) {
       originalConfig._retry = true;
       try {

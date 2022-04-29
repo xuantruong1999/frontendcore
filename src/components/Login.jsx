@@ -47,6 +47,7 @@ export default function Login(props) {
             login(username, password)
                 .then(res => {
                     if (res.status === 200) {
+                        debugger
                         dispatch(action.loginSuccess(res.data.user));
                         localStorage.setItem("authJWT", res.data.token)
                         localStorage.setItem("refreshToken", res.data.refreshToken);
